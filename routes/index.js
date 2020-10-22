@@ -1,17 +1,11 @@
-var express = require("express");
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const pokemonDB = require("../db/myPokeMongoDB.js");
-// [
-//   {
-
-//   }
-// ];
 
 /* GET home page. */
-router.get("/pokemonList", async (req, res, next) => {
-  const pokemon = await pokemonDB.getDB();
-  res.render("index", { title: "Express" });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'PokeMongoDB' });
 });
 
 module.exports = router;
