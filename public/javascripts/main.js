@@ -1,13 +1,40 @@
-const ulPlayerTeams = document.querySelector("#player_teams")
+const ulPokemon = document.querySelector("#pokemon")
+const ulPlayers = document.querySelector("#player")
 const divErr = document.querySelector("#err");
 
-function populateTeams(player_teams) {
-  for (let t of player_teams) {
-    const liT = document.createElement("li");
+function populatePokemon(pokemon) {
+  for (let p of pokemon) {
+    const liP = document.createElement("li");
 
-    liT.innerHTML = `Team 1: <br> ${t.pokemon1}`
+    liP.innerHTML = `${p.Pokemon}`
 
-    ulPlayerTeams.appendChild(liT);
+    ulPokemon.appendChild(liP);
   }
 }
 
+function populatePlayers(player) {
+  for (let t of player) {
+    const liT = document.createElement("li");
+
+    liT.innerHTML = `Player: <br> ${t}`
+
+    ulPlayers.appendChild(liT);
+  }
+}
+
+
+fetch("/pokemon")
+  .then((res) => res.json())
+  .then(populatePokemon)
+  .catch((err) => {
+    divErr.textContent = err.message;
+    divErr.style.display = "block";
+  });
+
+fetch("/player")
+  .then((res) => res.json())
+  .then(populatePlayers)
+  .catch((err) => {
+    divErr.textContent = err.message;
+    divErr.style.display = "block";
+  });
