@@ -59,7 +59,7 @@
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f43"},"Number":58,"Pokemon":"Growlithe","HP":55,"Atk":70,"Def":45,"SpA":70,"SpD":50,"Spe":60,"Total":350,"Type_I":"Fire","Type_II":""},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f44"},"Number":62,"Pokemon":"Poliwrath","HP":90,"Atk":85,"Def":95,"SpA":70,"SpD":90,"Spe":70,"Total":500,"Type_I":"Water","Type_II":"Fighting"},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f45"},"Number":61,"Pokemon":"Poliwhirl","HP":65,"Atk":65,"Def":65,"SpA":50,"SpD":50,"Spe":90,"Total":385,"Type_I":"Water","Type_II":""},
-,{"_id":{"$oid":"5f9218f9fc8c0a80329c8f46"},"Number":59,"Pokemon":"Arcanine","HP":90,"Atk":110,"Def":80,"SpA":100,"SpD":80,"Spe":95,"Total":555,"Type_I":"Fire","Type_II":""},
+{"_id":{"$oid":"5f9218f9fc8c0a80329c8f46"},"Number":59,"Pokemon":"Arcanine","HP":90,"Atk":110,"Def":80,"SpA":100,"SpD":80,"Spe":95,"Total":555,"Type_I":"Fire","Type_II":""},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f47"},"Number":65,"Pokemon":"Alakazam","HP":55,"Atk":50,"Def":45,"SpA":135,"SpD":85,"Spe":120,"Total":490,"Type_I":"Psychic","Type_II":""},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f48"},"Number":63,"Pokemon":"Abra","HP":25,"Atk":20,"Def":15,"SpA":105,"SpD":55,"Spe":90,"Total":310,"Type_I":"Psychic","Type_II":""},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f49"},"Number":68,"Pokemon":"Machamp","HP":90,"Atk":130,"Def":80,"SpA":65,"SpD":85,"Spe":55,"Total":505,"Type_I":"Fighting","Type_II":""},
@@ -148,5 +148,4 @@
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f9c"},"Number":148,"Pokemon":"Dragonair","HP":61,"Atk":84,"Def":65,"SpA":70,"SpD":70,"Spe":70,"Total":420,"Type_I":"Dragon","Type_II":""},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f9d"},"Number":149,"Pokemon":"Dragonite","HP":91,"Atk":134,"Def":95,"SpA":100,"SpD":100,"Spe":80,"Total":600,"Type_I":"Dragon","Type_II":"Flying"},
 {"_id":{"$oid":"5f9218f9fc8c0a80329c8f9e"},"Number":150,"Pokemon":"Mewtwo","HP":106,"Atk":110,"Def":90,"SpA":154,"SpD":90,"Spe":130,"Total":680,"Type_I":"Psychic","Type_II":""},
-{"_id":{"$oid":"5f9218f9fc8c0a80329c8f9f"},"Number":151,"Pokemon":"Mew","HP":100,"Atk":100,"Def":100,"SpA":100,"SpD":100,"Spe":100,"Total":600,"Type_I":"Psychic","Type_II":""},
-]
+{"_id":{"$oid":"5f9218f9fc8c0a80329c8f9f"},"Number":151,"Pokemon":"Mew","HP":100,"Atk":100,"Def":100,"SpA":100,"SpD":100,"Spe":100,"Total":600,"Type_I":"Psychic","Type_II":""}]
