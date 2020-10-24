@@ -6,7 +6,13 @@ function populatePokemon(pokemon) {
   for (let p of pokemon) {
     const liP = document.createElement("li");
 
-    liP.innerHTML = `${p.Pokemon}: `
+    liP.innerHTML = `${p.Pokemon}: <br>
+    HP: ${p.HP} <br>
+    ATK: ${p.Atk} <br>
+    DEF: ${p.Def} <br>
+    Special Atk: ${p.SpA} <br>
+    Special Defense: ${p.SpD} <br>
+    Type: ${p.Type_I} <br>`
 
     ulPokemon.appendChild(liP);
   }
