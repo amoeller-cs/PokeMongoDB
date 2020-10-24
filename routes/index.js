@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const myDB = require("../db/myPokeMongoDB.js");
 
 const pokemon = require("../db/pokemon.json");
 const team = [
@@ -18,8 +19,10 @@ router.get('/', function(req, res, next) {
   res.send({ title: 'PokeMongoDB' });
 });
 
-router.get('/pokemon', function(req, res, next) {
-  res.send(JSON.stringify(pokemon));
+router.get('/pokemon', async function(req, res, next) {
+  const pokemon = await myDB.getPokemon();
+  //res.send(JSON.stringify(pokemon));
+  res.json(pokemon);
 });
 
 module.exports = router;
