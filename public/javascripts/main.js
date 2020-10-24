@@ -6,7 +6,7 @@ function populatePokemon(pokemon) {
   for (let p of pokemon) {
     const liP = document.createElement("li");
 
-    liP.innerHTML = `${p.Pokemon}`
+    liP.innerHTML = `${p.Pokemon}: `
 
     ulPokemon.appendChild(liP);
   }
