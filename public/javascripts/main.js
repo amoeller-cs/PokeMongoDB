@@ -12,7 +12,9 @@ function populatePokemon(pokemon) {
     DEF: ${p.Def} <br>
     Special Atk: ${p.SpA} <br>
     Special Defense: ${p.SpD} <br>
-    Type: ${p.Type_I} <br>`
+    Speed: ${p.Spe} <br>
+    Type: ${p.Type_I} <br>
+    Type II: ${p.Type_II} <br>`;
 
     ulPokemon.appendChild(liP);
   }
