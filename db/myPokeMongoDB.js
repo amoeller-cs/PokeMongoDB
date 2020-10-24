@@ -17,12 +17,18 @@ function MyDB() {
   };
 
   myDB.getPlayer = async (player) => {
+    console.log("getting player");
     const client = new MongoClient(uri);
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
-    const players = db.collection("players");
+    const players = db.collection("players"); // access players collection
     const query = { name: player };
-    return players.find(query).toArray();
+    const result = await players.find(query).toArray(); // wait for query result
+    if (result == undefined || result.length == 0){ // if no entry for user
+      var newEntry = { name: player };
+      players.insertOne(newEntry); // create new entry in db
+    }
+    return players.find(query).toArray(); // return the players file
   };
 
   return myDB;
