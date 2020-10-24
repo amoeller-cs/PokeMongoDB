@@ -19,6 +19,11 @@ router.get('/', function(req, res, next) {
   res.send({ title: 'PokeMongoDB' });
 });
 
+router.get('/player', async function(req, res, next) {
+  const player = await myDB.getPlayer("alex");
+  res.json(player);
+});
+
 router.get('/pokemon', async function(req, res, next) {
   const pokemon = await myDB.getPokemon();
   //res.send(JSON.stringify(pokemon));
