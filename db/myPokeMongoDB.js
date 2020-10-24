@@ -1,26 +1,21 @@
-const mongo = require("mongodb");
+const { MongoClient } = require("mongodb");
 
-const MongoClient = mongo.MongoClient;
+function MyDB() {
+  const myDB = {};
 
-function PokemonDB() {
-  const pokemonDB = {};
+  const uri = "mongodb://localhost:27017";
 
-  pokemonDB.getPosts() {
-    return [1, 2, 3];
-  }
+  myDB.getPokemon = async () => {
+    const client = new MongoClient(uri);
 
-  return pokemonDB;
+    await client.connect();
+
+    const db = client.db("pokedb"); // access pokemon db
+    const players = db.collection("pokemon"); // access pokemon collection
+    const query = { Pokemon: "Pikachu" }; // query
+    return players.find(query).toArray();
+  };
+  return myDB;
 }
 
-function TeamsDB() {
-  const teamsDB = {};
-
-  teamsDB.getPosts() {
-    return [1, 2, 3];
-  }
-
-  return teamsDB;
-}
-
-module.exports = PokemonDB();
-module.exports = TeamsDB();
+module.exports = MyDB();
