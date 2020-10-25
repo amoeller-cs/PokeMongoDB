@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const myDB = require("../db/myPokeMongoDB.js"); //pokedb
 
 
@@ -15,7 +16,7 @@ router.get('/player', async (req, res, next) => {
 });
 
 router.get('/pokemon', async (req, res, next) => {
-  const pokemon = await myDB.getPokemon();
+  const pokemon = await myDB.getPokemon("Pikachu");
   //res.send(JSON.stringify(pokemon));
   res.json(pokemon);
 });
