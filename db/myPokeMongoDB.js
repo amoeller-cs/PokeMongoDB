@@ -22,7 +22,6 @@ function MyDB() {
   };
 
   myDB.getPlayer = async (player) => {
-    console.log(`getting player: ${player}`);
     const client = new MongoClient(uri);
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
@@ -34,6 +33,16 @@ function MyDB() {
       players.insertOne(newEntry); // create new entry in db
     }
     return players.find(query).toArray(); // return the players file
+  };
+
+  myDB.setPokemon = async (player, team, dex, newPokemon) => {
+    const tempString = team + "." + dex;
+    const client = new MongoClient(uri);
+    await client.connect();
+    const db = client.db("pokedb"); // access pokemon db
+    const players = db.collection("players"); // access players collection
+    players.updateOne({ name: player }, { $set: { [tempString]: newPokemon } }); // update the pokemon
+    return;
   };
 
   return myDB;
