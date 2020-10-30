@@ -7,14 +7,15 @@ const divErr = document.querySelector("#err");
 function populatePlayers(player) {
   for (let t of player) {
     const liT = document.createElement("li");
+    const liP = document.createElement("li");
 
-    liT.innerHTML = `Player: ${t.name}<br>
-    ${t.newTeam[0]}<br>
-    ${t.newTeam[1]}<br>
-    ${t.newTeam[2]}<br>
-    ${t.newTeam[3]}<br>
-    ${t.newTeam[4]}<br>
-    ${t.newTeam[5]}<br>`;
+    liT.innerHTML = `Player: ${t.name}<br>`;
+    liP.innerHTML = `${t.newTeam[0]}<br>
+      ${t.newTeam[1]}<br>
+      ${t.newTeam[2]}<br>
+      ${t.newTeam[3]}<br>
+      ${t.newTeam[4]}<br>
+      ${t.newTeam[5]}<br>`;
 
     ulPlayers.appendChild(liT);
   }

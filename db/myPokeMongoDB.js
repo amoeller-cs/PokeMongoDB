@@ -6,7 +6,7 @@ function MyDB() {
   const uri = "mongodb://localhost:27017";
 
   myDB.getPlayer = async (player) => {
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
     const players = db.collection("players"); // access players collection
@@ -21,7 +21,7 @@ function MyDB() {
 
   myDB.setPokemon = async (player, team, dex, newPokemon) => {
     const tempString = team + "." + dex;
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
     const players = db.collection("players"); // access players collection
@@ -30,7 +30,7 @@ function MyDB() {
   };
 
   myDB.createTeam = async (player, team) => {
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
     const db = client.db("pokedb");
     const players = db.collection("players");
@@ -41,7 +41,7 @@ function MyDB() {
 
   myDB.getPokemon = async (pokeDBSearch) => {
     console.log(`getting pokemon: ${pokeDBSearch}`);
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
 
     await client.connect();
 
@@ -56,7 +56,7 @@ function MyDB() {
   };
 
   myDB.loadPokemon = async() => {
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
 
     await client.connect();
 

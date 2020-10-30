@@ -7,7 +7,7 @@ const myDB = require("../db/myPokeMongoDB.js"); //pokedb
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.send({ title: 'PokeMongoDB' });
+  res.send({ title: 'PokeMongoDB Create a Team!' });
 });
 
 // router.get('/imgs', (req, res, next) => {
