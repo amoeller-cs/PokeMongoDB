@@ -47,7 +47,7 @@ function MyDB() {
 
     const db = client.db("pokedb"); // access pokemon db
     const pokemon = db.collection("pokemon"); // access pokemon collection
-    const query = {}; // search for pokeDBSearch
+    const query = { }; // search for pokeDBSearch
     const result = await pokemon.find(query).toArray(); // wait for query result
     if (result == undefined || result.length == 0){ // if no entry for pokemon or pokemon does not exist
       console.log(`could not find ${pokeDBSearch}`);

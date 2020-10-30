@@ -31,11 +31,11 @@ fetch("/player")
 
 function populatePokemon(pokemon) {
   for (let p of pokemon) {
-    const divPs = document.createElement("div");
+    // const divPs = document.createElement("div");
     const liP = document.createElement("li");
-    const divPe = document.createElement("div");
+    // const divPe = document.createElement("div");
 
-    divPs.innerHTML = `<div class="col-5">`;
+    // divPs.innerHTML = `<div class="col-5">`;
 
     liP.innerHTML = `${p.Pokemon} (#${p._id}) <br>
     <img src="./images/${p._id}.png" 
@@ -51,11 +51,11 @@ function populatePokemon(pokemon) {
     Type II: ${p.Type_2} <br><br>
     <input type="submit" value="Add this pokemon" id="pokeSelection">`;
 
-    divPs.innerHTML = `</div>`;
+    // divPs.innerHTML = `</div>`;
 
-    ulPokemon.appendChild(divPs);
+    // ulPokemon.appendChild(divPs);
     ulPokemon.appendChild(liP);
-    ulPokemon.appendChild(divPe);
+    // ulPokemon.appendChild(divPe);
   }
 }
 
