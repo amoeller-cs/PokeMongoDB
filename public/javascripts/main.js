@@ -8,7 +8,13 @@ function populatePlayers(player) {
   for (let t of player) {
     const liT = document.createElement("li");
 
-    liT.innerHTML = `Player: <br> ${t}`
+    liT.innerHTML = `Player: ${t.name}<br>
+    ${t.newTeam[0]}<br>
+    ${t.newTeam[1]}<br>
+    ${t.newTeam[2]}<br>
+    ${t.newTeam[3]}<br>
+    ${t.newTeam[4]}<br>
+    ${t.newTeam[5]}<br>`;
 
     ulPlayers.appendChild(liT);
   }

@@ -47,7 +47,7 @@ function MyDB() {
 
     const db = client.db("pokedb"); // access pokemon db
     const pokemon = db.collection("pokemon"); // access pokemon collection
-    const query = { Pokemon: pokeDBSearch };
+    const query = {}; // search for pokeDBSearch
     const result = await pokemon.find(query).toArray(); // wait for query result
     if (result == undefined || result.length == 0){ // if no entry for pokemon or pokemon does not exist
       console.log(`could not find ${pokeDBSearch}`);
@@ -61,7 +61,7 @@ function MyDB() {
     await client.connect();
 
     const db = client.db("pokedb"); // access pokemon db
-    db.collection("pokemon", function (err, collection) {
+    db.collection("pokemon", (err, collection) => {
       collection.insertOne({ _id: "001", Pokemon: "Bulbasaur",   HP: 45 , Atk: 49 , Def: 49 , SpA: 65 , SpD: 65 , Spe: 45 , Total: 318, Type_1:"Grass", Type_2: "Poison" });
       collection.insertOne({ _id: "002", Pokemon: "Ivysaur",   HP: 60 , Atk: 62 , Def: 63 , SpA: 80 , SpD: 80 , Spe: 60 , Total: 405, Type_1:"Grass", Type_2: "Poison" });
       collection.insertOne({ _id: "003", Pokemon: "Venusaur",   HP: 80 , Atk: 82 , Def: 83 , SpA: 100, SpD: 100, Spe: 80 , Total: 525, Type_1:"Grass", Type_2: "Poison" });
