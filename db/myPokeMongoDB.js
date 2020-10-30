@@ -29,6 +29,16 @@ function MyDB() {
     return;
   };
 
+  myDB.createTeam = async (player, team) => {
+    const client = new MongoClient(uri);
+    await client.connect();
+    const db = client.db("pokedb");
+    const players = db.collection("players");
+    const newTeamArray = ["001", "004", "007", "025", "016", "019"];
+    players.updateOne({ name: player }, { $set: { [team]: newTeamArray } });
+    return;
+  };
+
   myDB.getPokemon = async (pokeDBSearch) => {
     console.log(`getting pokemon: ${pokeDBSearch}`);
     const client = new MongoClient(uri);
@@ -204,6 +214,7 @@ function MyDB() {
       collection.insertOne({ Number: "150", Pokemon: "Mewtwo",   HP: 106, Atk: 110, Def: 90 , SpA: 154, SpD: 90 , Spe: 130, Total: 680, Type_1:"Psychic" });
       collection.insertOne({ Number: "151", Pokemon: "Mew",   HP: 100, Atk: 100, Def: 100, SpA: 100, SpD: 100, Spe: 100, Total: 600, Type_1:"Psychic" });
     });
+    return;
   };
     
   return myDB;
