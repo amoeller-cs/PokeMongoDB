@@ -41,8 +41,8 @@ function populatePokemon(pokemon) {
     Special Atk: ${p.SpA} <br>
     Special Defense: ${p.SpD} <br>
     Speed: ${p.Spe} <br>
-    Type: ${p.Type_I} <br>
-    Type II: ${p.Type_II} <br><br>
+    Type: ${p.Type_1} <br>
+    Type II: ${p.Type_2} <br><br>
     <input type="submit" value="Add this pokemon" id="pokeSelection">`;
 
     divPs.innerHTML = `</div>`;
