@@ -33,4 +33,16 @@ router.get('/test', async function(req, res, next) {
   res.json(player);
 });
 
+router.get('/start', async function(req, res, next) {
+  myDB.loadPokemon();
+  const pokemon = await myDB.getPokemon("Squirtle");
+  res.json(pokemon);
+});
+
+router.get('/newTeam', async function(req, res, next) {
+  myDB.createTeam("alex", "newTeam");
+  const player = await myDB.getPlayer("alex");
+  res.json(player);
+});
+
 module.exports = router;
