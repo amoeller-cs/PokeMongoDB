@@ -31,10 +31,10 @@ function populatePokemon(pokemon) {
 
     divPs.innerHTML = `<div class="col-5">`;
 
-    liP.innerHTML = `${p.Pokemon} (#${p.Number}) <br>
-    <img src="./images/${p.Number}.png" 
-      alt="${p.Pokemon} (#${p.Number}) Sprite" 
-      title="${p.Pokemon} (#${p.Number})"> <br>
+    liP.innerHTML = `${p.Pokemon} (#${p._id}) <br>
+    <img src="./images/${p._id}.png" 
+      alt="${p.Pokemon} (#${p._id}) Sprite" 
+      title="${p.Pokemon} (#${p._id})"> <br>
     HP: ${p.HP} <br>
     ATK: ${p.Atk} <br>
     DEF: ${p.Def} <br>
