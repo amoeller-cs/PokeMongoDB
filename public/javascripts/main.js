@@ -1,3 +1,5 @@
+/* global React, ReactDOM */
+
 const ulPokemon = document.querySelector("#pokemon")
 const ulPlayers = document.querySelector("#player")
 const divErr = document.querySelector("#err");
@@ -23,12 +25,11 @@ fetch("/player")
 
 function populatePokemon(pokemon) {
   for (let p of pokemon) {
+    const divPs = document.createElement("div");
     const liP = document.createElement("li");
+    const divPe = document.createElement("div");
 
-    while (p.Number.length < 3) {
-      const imgNumber = ['0', p.Number.toString()].join();
-      console.log(imgNumber);
-    }
+    divPs.innerHTML = `<div class="col-5">`;
 
     liP.innerHTML = `${p.Pokemon} (#${p.Number}) <br>
     <img src="./images/${p.Number}.png" 
@@ -44,7 +45,11 @@ function populatePokemon(pokemon) {
     Type II: ${p.Type_II} <br><br>
     <input type="submit" value="Add this pokemon" id="pokeSelection">`;
 
+    divPs.innerHTML = `</div>`;
+
+    ulPokemon.appendChild(divPs);
     ulPokemon.appendChild(liP);
+    ulPokemon.appendChild(divPe);
   }
 }
 
@@ -55,3 +60,16 @@ fetch("/pokemon")
     divErr.textContent = err.message;
     divErr.style.display = "block";
   });
+
+// const e = React.createElement;
+
+// function MyComp() {
+//   const [search, setSearch] = React.useState("");
+//   const btn = e("button", {onClick: () => setSearch(search)}, "Search");
+//   const output = e("output", {}, `Searching for: ${search}`);
+//   const div = e("div", {}, btn);
+//   return div;
+// }
+// const page = document.querySelector("#page");
+
+// ReactDOM.render(e(MyComp, page);

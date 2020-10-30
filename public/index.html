@@ -1,59 +1,78 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head profile="http://www.w3.org/2005/10/profile">
+    <link rel="icon" 
+      type="image/png" 
+      href="./images/pokeball-favicon.png">
+    <title>PokeMongoDB</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <head profile="http://www.w3.org/2005/10/profile">
-  <link rel="icon" 
-    type="image/png" 
-    href="./images/pokeball-favicon.png">
-  <title>PokeMongoDB</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
-</head>
+  <body>
+    <div id="page"></div>
+    <div class="container">
+      <h1><img src="./images/pika.png" 
+          alt="Pikachu" 
+          title="Pikachu"
+          width="80">PokeMongoDB</h1>
+          <!-- Image from http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035 -->
+      <p>Build Your Best Team!</p>
+    
+      <div class="row">
+        <form>
+          <label for="username">Username:</label><br>
+          <input type="text" id="username">
+          <input type="submit" value="Submit" id="userSub">
+        </form>
+      </div>
+      <div class="row">
+        <ul id="player"></ul>
+      </div>
 
-<body>
-  <div class="container">
-    <h1><img src="./images/pika.png" 
-      alt="Pikachu" 
-      title="Pikachu"
-      width="80">PokeMongoDB</h1>
-      <!-- Image from http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035 -->
-    <p>Build Your Best Team!</p>
-
-    <form>
-      <label for="username">Username:</label><br>
-      <input type="text" id="username"><br><br>
-      <input type="submit" value="Submit" id="userSub">
-    </form>
-
-    <ul id="player"></ul>
-
-    <br>
-    <br>
-
-    <form>
-      <label for="search">Search for a pokemon to add to your team:</label>
       <br>
-      <input type="text" id="searchPokemon">
-      <input type="submit" value="Search" id="pokeDBSearch">
-    </form>
-    <br>
-    <ul id="pokemon"></ul>
+      <br>
+     
+      <div class="row">
+        <form>
+          <label for="search">Search for a pokemon to add to your team:</label>
+          <br>
+          <input type="text" id="searchPokemon">
+          <input type="submit" value="Search" id="pokeDBSearch">
+        </form>
+      </div>
+      <div class="row">
+        <br>
+        <ul id="pokemon"></ul>
+      </div>
+    
+      <br>
+      <br>
 
-    <br>
-    <br>
-    <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./images/pokeball-favicon.png" 
-      alt="Pokeball" 
-      title="Pokeball"
-      width="30"></footer>
-      <!-- Image from https://www.freeiconspng.com/img/45343 -->
-  </div>
+      <div class="row">
+        <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./images/pokeball-favicon.png" 
+          alt="Pokeball" 
+          title="Pokeball"
+          width="30"></footer>
+          <!-- Image from https://www.freeiconspng.com/img/45343 -->
+      </div>
+    </div>
 
-<!-- Javascript -->
-  <script src="./javascripts/main.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-</body>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script src="./javascripts/main.js"></script>
+  </body>
 </html>

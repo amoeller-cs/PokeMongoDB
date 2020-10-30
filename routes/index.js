@@ -20,8 +20,10 @@ router.get('/player', async (req, res, next) => {
   res.json(player);
 });
 
+// const pokemonList = ["Squirtle", "Pikachu"];
+
 router.get('/pokemon', async (req, res, next) => {
-  const pokemon = await myDB.getPokemon("Squirtle");
+  const pokemon = await myDB.getPokemon("Pikachu");
   res.json(pokemon);
 });
 
