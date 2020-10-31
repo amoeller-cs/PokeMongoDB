@@ -23,7 +23,7 @@ router.get('/player', async (req, res, next) => {
 // const pokemonList = ["Squirtle", "Pikachu"];
 
 router.get('/pokemon', async (req, res, next) => {
-  const pokemon = await myDB.getPokemon("Pikachu");
+  const pokemon = await myDB.getPokemon();
   res.json(pokemon);
 });
 

@@ -32,11 +32,7 @@ fetch("/player")
 
 function populatePokemon(pokemon) {
   for (let p of pokemon) {
-    // const divPs = document.createElement("div");
     const liP = document.createElement("li");
-    // const divPe = document.createElement("div");
-
-    // divPs.innerHTML = `<div class="col-5">`;
 
     liP.innerHTML = `${p.Pokemon} (#${p._id}) <br>
     <img src="./images/${p._id}.png" 
@@ -52,11 +48,7 @@ function populatePokemon(pokemon) {
     Type II: ${p.Type_2} <br><br>
     <input type="submit" value="Add this pokemon" id="pokeSelection">`;
 
-    // divPs.innerHTML = `</div>`;
-
-    // ulPokemon.appendChild(divPs);
     ulPokemon.appendChild(liP);
-    // ulPokemon.appendChild(divPe);
   }
 }
 
@@ -67,16 +59,3 @@ fetch("/pokemon")
     divErr.textContent = err.message;
     divErr.style.display = "block";
   });
-
-// const e = React.createElement;
-
-// function MyComp() {
-//   const [search, setSearch] = React.useState("");
-//   const btn = e("button", {onClick: () => setSearch(search)}, "Search");
-//   const output = e("output", {}, `Searching for: ${search}`);
-//   const div = e("div", {}, btn);
-//   return div;
-// }
-// const page = document.querySelector("#page");
-
-// ReactDOM.render(e(MyComp, page);

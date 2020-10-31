@@ -1,10 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+
+import Pokemon from "./Pokemon.js"
 
 
 function App() {
+  const [pokemon, setPokemon] = useState([]);
+
+
+  const getPokemon = async () => {
+    console.log("getting pokemon");
+    try {
+      const _pokemon = await fetch("/pokemon").then((res) => res.json());
+      console.log("got pokemon", pokemon);
+      setPokemon(_pokemon);
+    } catch (err) {
+      console.log("error ", err);
+    }
+  };
+
+  useEffect(() => {
+    getPokemon();
+  }); // Only run the first time
+
+  console.log("rendering app", pokemon);
+
   return (
-    <div className="App" class="container">
+    <div className="App">
       <h1><img src="./images/pika.png" 
           alt="Pikachu" 
           title="Pikachu"
@@ -12,23 +34,7 @@ function App() {
 
       <p>Build Your Best Team!</p>
 
-      <form>
-        <label for="username">Username:</label><br/>
-        <input type="text" id="username"/>
-        <input type="submit" value="Submit" id="userSub"/>
-      </form>
-
-      <ul id="player"></ul>
-
-      <form>
-        <label for="search">Search for a pokemon to add to your team:</label>
-        <br/>
-        <input type="text" id="searchPokemon"/>
-        <input type="submit" value="Search" id="pokeDBSearch"/>
-      </form>
-
-      <br/>
-      <ul id="pokemon"></ul>
+      <Pokemon pokemon={pokemon}></Pokemon>
 
       <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./images/pokeball-favicon.png" 
         alt="Pokeball" 
