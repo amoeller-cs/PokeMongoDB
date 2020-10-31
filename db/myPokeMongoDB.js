@@ -3,7 +3,7 @@ const { MongoClient } = require("mongodb");
 function MyDB() {
   const myDB = {};
 
-  const uri = "mongodb://localhost:27017";
+  const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
 
   myDB.getPlayer = async (player) => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
@@ -47,12 +47,12 @@ function MyDB() {
 
     const db = client.db("pokedb"); // access pokemon db
     const pokemon = db.collection("pokemon"); // access pokemon collection
-    const query = { }; // search for pokeDBSearch
+    const query = {}; // search for pokeDBSearch
     const result = await pokemon.find(query); // wait for query result
     if (result == undefined || result.length == 0){ // if no entry for pokemon or pokemon does not exist
       console.log(`could not find ${pokeDBSearch}`);
     }
-    return pokemon.find(query).toArray();
+    return pokemon.find(query).sort({ _id: 1}).toArray().finally(() => client.close());
   };
 
   myDB.loadPokemon = async() => {

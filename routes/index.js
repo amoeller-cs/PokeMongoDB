@@ -25,6 +25,7 @@ router.get('/player', async (req, res, next) => {
 router.get('/pokemon', async (req, res, next) => {
   const pokemon = await myDB.getPokemon();
   res.json(pokemon);
+  // res.redirect("/");
 });
 
 router.get('/test', async (req, res, next) => {

@@ -7,21 +7,19 @@ import Pokemon from "./Pokemon.js"
 function App() {
   const [pokemon, setPokemon] = useState([]);
 
-
-  const getPokemon = async () => {
-    console.log("getting pokemon");
-    try {
-      const _pokemon = await fetch("/pokemon").then((res) => res.json());
-      console.log("got pokemon", pokemon);
-      setPokemon(_pokemon);
-    } catch (err) {
-      console.log("error ", err);
-    }
-  };
-
   useEffect(() => {
+    const getPokemon = async () => {
+      console.log("getting pokemon");
+      try {
+        const _pokemon = await fetch("/pokemon").then((res) => res.json());
+        console.log("got pokemon", pokemon);
+        setPokemon(_pokemon);
+      } catch (err) {
+        console.log("error ", err);
+      }
+    };
     getPokemon();
-  }); // Only run the first time
+  }, []); // Only run the first time
 
   console.log("rendering app", pokemon);
 
