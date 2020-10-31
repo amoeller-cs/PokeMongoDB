@@ -10,9 +10,9 @@ function Pokemon(props) {
       .map((p) => (
         <li key={p._id}>
           {p.Pokemon} (#{p._id}) <br/>
-          <img src={"../front/public/images/{p._id}.png"} 
-            alt={"{p.Pokemon} (#{p._id}) Sprite"} 
-            title={"{p.Pokemon} (#{p._id})"}/> <br/>
+          <img src='./images/{p._id}.png' 
+            alt="{p.Pokemon} (#{p._id}) Sprite" 
+            title="{p.Pokemon} (#{p._id})"/> <br/>
           HP: {p.HP} <br/>
           ATK: {p.Atk} <br/>
           DEF: {p.Def} <br/>
@@ -20,8 +20,10 @@ function Pokemon(props) {
           Special Defense: {p.SpD} <br/>
           Speed: {p.Spe} <br/>
           Type: {p.Type_1} <br/>
-          Type II: {p.Type_2} <br/><br/>
+          Type II: {p.Type_2} <br/>
           <input type="submit" value="Add this pokemon" id="pokeSelection"/>
+          <br/>
+          <br/>
         </li>
       ));
   };

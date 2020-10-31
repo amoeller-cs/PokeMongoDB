@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1><img src="./images/pika.png" 
+      <h1><img src="./pika.png" 
           alt="Pikachu" 
           title="Pikachu"
           width="80"/>PokeMongoDB</h1>
