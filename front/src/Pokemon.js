@@ -6,7 +6,7 @@ function Pokemon(props) {
 
   const renderPokemon = () => {
     return props.pokemon
-      .filter((p) => p.Pokemon && p.Pokemon.startsWith(search))
+      .filter((p) => p.Pokemon && p.Pokemon.toLowerCase().startsWith(search.toLowerCase()))
       .map((p) => (
         <li key={p._id}>
           {p.Pokemon} (#{p._id}) <br/>
