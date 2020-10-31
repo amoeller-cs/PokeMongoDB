@@ -24,7 +24,7 @@ function App() {
   console.log("rendering app", pokemon);
 
   return (
-    <div className="App">
+    <div className="App" className="container">
       <h1><img src="./pika.png" 
           alt="Pikachu" 
           title="Pikachu"
@@ -34,7 +34,7 @@ function App() {
 
       <Pokemon pokemon={pokemon}></Pokemon>
 
-      <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./images/pokeball-favicon.png" 
+      <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
         alt="Pokeball" 
         title="Pokeball"
         width="30"/>
