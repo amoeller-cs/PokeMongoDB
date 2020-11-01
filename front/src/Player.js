@@ -15,50 +15,50 @@ function Player(props) {
   	let poke3 = teams[0].team[3];
   	let poke4 = teams[0].team[4];
   	let poke5 = teams[0].team[5];
-  	return (<div>
-        <h2 name="teams">{teams[0].name.toUpperCase()}'s Team:</h2>
-	  		<li key={poke}>
-						1. <br/>
-	       <img src={`./images/${poke}.png`} 
-	         alt={`(#${poke}) Sprite`} />
-	       <br/>
-	       <br/>
-	     </li>
-	     <li key={poke3}>
-						4. <br/>
-	       <img src={`./images/${poke3}.png`} 
-	         alt={`(#${poke3}) Sprite`} />
-	       <br/>
-	       <br/>
-	     </li>
-	     <li key={poke1}>
-						2. <br/>
-	       <img src={`./images/${poke1}.png`} 
-	         alt={`(#${poke1}) Sprite`} />       
-         <br/>
-	       <br/>
-	      </li>
-	      <li key={poke4}>
-							5. <br/>
-	        <img src={`./images/${poke4}.png`} 
-	          alt={`(#${poke4}) Sprite`} />
-	        <br/>
-	        <br/>
-	      </li>
-	      <li key={poke2}>
-							3. <br/>
-	        <img src={`./images/${poke2}.png`} 
-	          alt={`(#${poke2}) Sprite`} />
-	        <br/>
-	        <br/>
-	      </li>
-	      <li key={poke5}>
-							6. <br/>
-	        <img src={`./images/${poke5}.png`} 
-	          alt={`(#${poke5}) Sprite`} />
-	        <br/>
-	        <br/>
-	      </li>
+  	return (
+      <div>
+    		<li key={poke}>
+					1. <br/>
+          <img src={`./images/${poke}.png`} 
+           alt={`(#${poke}) Sprite`} />
+          <br/>
+          <br/>
+        </li>
+        <li key={poke3}>
+          4. <br/>
+          <img src={`./images/${poke3}.png`} 
+          alt={`(#${poke3}) Sprite`} />
+          <br/>
+          <br/>
+        </li>
+        <li key={poke1}>
+          2. <br/>
+          <img src={`./images/${poke1}.png`} 
+          alt={`(#${poke1}) Sprite`} />       
+          <br/>
+          <br/>
+        </li>
+        <li key={poke4}>
+          5. <br/>
+          <img src={`./images/${poke4}.png`} 
+          alt={`(#${poke4}) Sprite`} />
+          <br/>
+          <br/>
+        </li>
+        <li key={poke2}>
+          3. <br/>
+          <img src={`./images/${poke2}.png`} 
+          alt={`(#${poke2}) Sprite`} />
+          <br/>
+          <br/>
+        </li>
+        <li key={poke5}>
+          6. <br/>
+          <img src={`./images/${poke5}.png`} 
+          alt={`(#${poke5}) Sprite`} />
+          <br/>
+          <br/>
+          </li>
       </div>);
   };
 
@@ -129,7 +129,7 @@ function Player(props) {
   return (
     <div>
       <label htmlFor="search">
-        Search for a pokemon to add to your team: {" "}
+        Enter your username: {" "}
       <input type="text" value={search} onChange={(evt) => setPlayer(evt.target.value)}/>
       </label>
       <br/>

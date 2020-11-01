@@ -3,8 +3,14 @@ import PropTypes from "prop-types";
 
 function Pokemon(props) {
   const [search, setPokemon] = useState("");
+  // const [searchPlayer, setPlayer] = useState("");
 
   const renderPokemon = () => {
+    // const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(searchPlayer.toLowerCase())); // returns array of players that match search term
+    // console.log(teams);
+    // <p>Editing {teams[0].name}'s team:</p>
+    // <input type="hidden" name="name" value={teams[0].name} />
+
     return props.pokemon
       .filter((p) => p.Pokemon && p.Pokemon.toLowerCase().startsWith(search.toLowerCase()))
       .map((p) => (
@@ -22,6 +28,7 @@ function Pokemon(props) {
           Type: {p.Type_1} <br/>
           Type II: {p.Type_2} <br/>
           <form action="/updateTeam" method="post">
+            <br/>
             <label htmlFor="position">Choose the position: <br/></label>
             <select name="position" id={`position${p._id}`}>
               <option value="1">1</option>
@@ -54,6 +61,12 @@ function Pokemon(props) {
     </div>
   );
 }
+
+// <label htmlFor="searchPlayer">
+//         Enter your username: {" "}
+//       <input type="text" value={searchPlayer} onChange={(evt) => setPlayer(evt.target.value)}/>
+//       </label>
+//       <br/>
 
 Pokemon.propTypes ={
   pokemon: PropTypes.array,
