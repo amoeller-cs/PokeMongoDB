@@ -35,6 +35,20 @@ function App() {
   //   };
   //   getTeam();
   // }, []); // Only run the first time
+  
+  useEffect(() => {
+    const getPlayer = async () => {
+      console.log("getting player");
+      try {
+        const _player = await fetch("/player").then((res) => res.json());
+        console.log("got player", player);
+        setPlayer(_player);
+      } catch (err) {
+        console.log("error ", err);
+      }
+    };
+    getPlayer();
+  }, []);
 
   // console.log("rendering app", pokemon);
   // console.log("rendering teams", team);
@@ -78,6 +92,7 @@ function App() {
       </div>
       <div className="row" id="entry">
         {showPokemon ? <Pokemon pokemon={pokemon}></Pokemon> : "Enter a username and begin creating your team!"}
+        <Player player={player}></Player>
       </div>
       <br/>
       <div className="row">
