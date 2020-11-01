@@ -9,11 +9,10 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
   const [player, setPlayer] = useState([]);
-  // const [team, setTeam] = useState([]);
+  const [showTeam, setShowTeam] = useState(false);
 
   useEffect(() => {
     const getPokemon = async () => {
-      console.log("getting pokemon");
       try {
         const _pokemon = await fetch("/pokemon").then((res) => res.json());
         setPokemon(_pokemon);
@@ -29,7 +28,6 @@ function App() {
       console.log("getting player");
       try {
         const _player = await fetch("/player").then((res) => res.json());
-        console.log("got player", player);
         setPlayer(_player);
       } catch (err) {
         console.log("error ", err);
@@ -37,9 +35,6 @@ function App() {
     };
     getPlayer();
   }, []);
-
-  // console.log("rendering app", pokemon);
-  // console.log("rendering teams", team);
 
   return (
     <div className="App container text-left">
@@ -53,29 +48,29 @@ function App() {
         </a>
         <a
           className="nav-item active nav-link"
-          href="about"
+          href="teamEdit"
           onClick={(evt) => {
             evt.preventDefault();
-            //setShowUser(true);
+            setShowTeam(true);
             setShowPokemon(false);
           }}
         >
-          About PokeMongoDB
+          Team Edit<span className="sr-only">(current)</span>
         </a>
         <a
           className="nav-item active nav-link"
-          href="teamEdit"
+          href="pokeList"
           onClick={(evt) => {
             evt.preventDefault();
             setShowPokemon(true);
           }}
         >
-          Edit Team<span className="sr-only">(current)</span>
+          Pokemon List<span className="sr-only">(current)</span>
         </a>
       </nav>
       <p>Build Your Best Team!</p>
-      {showPokemon ? <Pokemon pokemon={pokemon}></Pokemon> : "Enter a username and begin creating your team!"}
-      <Player player={player}></Player>
+      {showPokemon ? <Pokemon pokemon={pokemon}></Pokemon> : ""}
+      {showTeam ? <Player player={player}></Player> : ""}
       <br/>
       <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
         alt="Pokeball" 
@@ -87,6 +82,17 @@ function App() {
 }
 
 // Image from https://www.freeiconspng.com/img/45343
+// <a
+//   className="nav-item active nav-link"
+//   href="about"
+//   onClick={(evt) => {
+//     evt.preventDefault();
+//     setShowTeam(false);
+//     setShowPokemon(false);
+//   }}
+// >
+//   About PokeMongoDB
+// </a>
 
 
 export default App;

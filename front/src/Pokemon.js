@@ -21,16 +21,10 @@ function Pokemon(props) {
           Speed: {p.Spe} <br/>
           Type: {p.Type_1} <br/>
           Type II: {p.Type_2} <br/>
-          <button id="addPokemon" onClick={addPokemon}>Add this pokemon</button>
-          <br/>
           <br/>
         </li>
       ));
   };
-
-  const addPokemon = () => {
-    return props.pokemon;
-  }
   
   console.log("rendering Pokemon", search);
 
