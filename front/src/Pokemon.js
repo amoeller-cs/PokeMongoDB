@@ -36,6 +36,10 @@ function Pokemon(props) {
         </li>
       ));
   };
+
+  const addPokemon = () => {
+    return props.pokemon;
+  };
   
   console.log("rendering Pokemon", search);
 
