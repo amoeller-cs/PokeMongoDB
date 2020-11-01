@@ -28,8 +28,8 @@ router.get('/pokemon', async (req, res, next) => {
   // res.redirect("/");
 });
 
-router.get('/test', async (req, res, next) => {
-  myDB.setPokemon("alex", "newTeam", 0, "100");
+router.get('/getTeam', async (req, res, next) => {
+  myDB.setPokemon("alex", "newTeam", 0, "100"); // (player, team, dex(team index), newPokemon(list #))
   const player = await myDB.getPlayer("alex");
   res.json(player);
 });

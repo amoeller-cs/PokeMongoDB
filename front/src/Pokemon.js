@@ -21,12 +21,16 @@ function Pokemon(props) {
           Speed: {p.Spe} <br/>
           Type: {p.Type_1} <br/>
           Type II: {p.Type_2} <br/>
-          <input type="submit" value="Add this pokemon" id="pokeSelection"/>
+          <button id="addPokemon" onClick={addPokemon}>Add this pokemon</button>
           <br/>
           <br/>
         </li>
       ));
   };
+
+  const addPokemon = () => {
+    return props.pokemon;
+  }
   
   console.log("rendering Pokemon", search);
 
@@ -35,9 +39,9 @@ function Pokemon(props) {
       <label htmlFor="search">
         Search for a pokemon to add to your team: {" "}
       <input type="text" value={search} onChange={(evt) => setPokemon(evt.target.value)}/>
-      </label><br/>
-  
+      </label>
       <br/>
+  
       <ul>{renderPokemon()}</ul>
     </div>
   );

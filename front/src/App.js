@@ -6,13 +6,14 @@ import Pokemon from "./Pokemon.js"
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [showPokemon, setShowPokemon] = useState(false);
+  // const [team, setTeam] = useState([]);
 
   useEffect(() => {
     const getPokemon = async () => {
       console.log("getting pokemon");
       try {
         const _pokemon = await fetch("/pokemon").then((res) => res.json());
-        console.log("got pokemon", pokemon);
         setPokemon(_pokemon);
       } catch (err) {
         console.log("error ", err);
@@ -21,24 +22,71 @@ function App() {
     getPokemon();
   }, []); // Only run the first time
 
-  console.log("rendering app", pokemon);
+  // useEffect(() => {
+  //   const getTeam = async () => {
+  //     console.log("getting teams");
+  //     try {
+  //       const _team = await fetch("/getTeam").then((res) => res.json());
+  //       console.log("got teams", team);
+  //       setPokemon(_team);
+  //     } catch (err) {
+  //       console.log("error ", err);
+  //     }
+  //   };
+  //   getTeam();
+  // }, []); // Only run the first time
+
+  // console.log("rendering app", pokemon);
+  // console.log("rendering teams", team);
 
   return (
-    <div className="App" className="container">
-      <h1><img src="./pika.png" 
-          alt="Pikachu" 
-          title="Pikachu"
-          width="80"/>PokeMongoDB</h1>
-
-      <p>Build Your Best Team!</p>
-
-      <Pokemon pokemon={pokemon}></Pokemon>
-
-      <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
-        alt="Pokeball" 
-        title="Pokeball"
-        width="30"/>
-      </footer>
+    <div className="App container">
+      <div className="row">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <a className="navbar-brand" href="/">
+            <img src="./pika.png" 
+              alt="Pikachu" 
+              title="Pikachu"
+              width="60"/>
+            PokeMongoDB
+          </a>
+          <a
+            className="nav-item active nav-link"
+            href="about"
+            onClick={(evt) => {
+              evt.preventDefault();
+              //setShowUser(true);
+              setShowPokemon(false);
+            }}
+          >
+            About PokeMongoDB
+          </a>
+          <a
+            className="nav-item active nav-link"
+            href="teamEdit"
+            onClick={(evt) => {
+              evt.preventDefault();
+              setShowPokemon(true);
+            }}
+          >
+            Edit Team<span className="sr-only">(current)</span>
+          </a>
+        </nav>
+      </div>
+      <div className="row" id="motto">
+        <p>Build Your Best Team!</p>
+      </div>
+      <div className="row" id="entry">
+        {showPokemon ? <Pokemon pokemon={pokemon}></Pokemon> : "Enter a username and begin creating your team!"}
+      </div>
+      <br/>
+      <div className="row">
+        <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
+          alt="Pokeball" 
+          title="Pokeball"
+          width="30"/>
+        </footer>
+      </div>
     </div>
   );
 }
