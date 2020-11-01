@@ -20,7 +20,6 @@ function Player(props) {
 						(#{poke}) <br/>
 	       <img src={`./images/${poke}.png`} 
 	         alt={`(#${poke}) Sprite`} />
-	       <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
 	       <br/>
 	       <br/>
 	     </li>
@@ -28,15 +27,13 @@ function Player(props) {
 						(#{poke1}) <br/>
 	       <img src={`./images/${poke1}.png`} 
 	         alt={`(#${poke1}) Sprite`} />
-	       <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
 	       <br/>
 	       <br/>
 	     </li>
 	     <li key={poke2}>
 						(#{poke2}) <br/>
 	       <img src={`./images/${poke2}.png`} 
-	         alt={`(#${poke2}) Sprite`} />
-        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>	       
+	         alt={`(#${poke2}) Sprite`} />       
          <br/>
 	       <br/>
 	      </li>
@@ -44,7 +41,6 @@ function Player(props) {
 							(#{poke3}) <br/>
 	        <img src={`./images/${poke3}.png`} 
 	          alt={`(#${poke3}) Sprite`} />
-	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
 	        <br/>
 	        <br/>
 	      </li>
@@ -52,7 +48,6 @@ function Player(props) {
 							(#{poke4}) <br/>
 	        <img src={`./images/${poke4}.png`} 
 	          alt={`(#${poke4}) Sprite`} />
-	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
 	        <br/>
 	        <br/>
 	      </li>
@@ -60,7 +55,6 @@ function Player(props) {
 							(#{poke5}) <br/>
 	        <img src={`./images/${poke5}.png`} 
 	          alt={`(#${poke5}) Sprite`} />
-	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
 	        <br/>
 	        <br/>
 	      </li>
@@ -71,7 +65,8 @@ function Player(props) {
     <div>
       <label htmlFor="player">
         Enter your username: {" "}
-      <input type="text" value={player} onChange={(evt) => setPlayer(evt.target.value)}/>
+      <input type="text" value={player} onChange={(evt) =>
+      	setPlayer(evt.target.value)}/>
       </label><br/>
   
       <br/>
