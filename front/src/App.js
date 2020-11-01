@@ -71,9 +71,9 @@ function App() {
           Pokemon List<span className="sr-only">(current)</span>
         </a>
       </nav>
-      <p>Build Your Best Team!</p>
-      {showPokemon ? <Pokemon pokemon={pokemon}></Pokemon> : ""}
-      {showTeam ? <Player player={player}></Player> : ""}
+      <h1>Build Your Best Team!</h1>
+      {showPokemon ? <Pokemon player={player} pokemon={pokemon}></Pokemon> : ""}
+      {showTeam ? <Player player={player} pokemon={pokemon}></Player> : ""}
       <br/>
       <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
         alt="Pokeball" 

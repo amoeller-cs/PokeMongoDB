@@ -25,16 +25,17 @@ router.get('/player', async (req, res, next) => {
 router.get('/pokemon', async (req, res, next) => {
   const pokemon = await myDB.getPokemon();
   res.json(pokemon);
-  // res.redirect("/");
 });
 
 router.post('/updateTeam', async (req, res, next) => {
   let dex = req.body.position;
   dex = dex - 1;
   let pokemon = req.body.newPokemon;
+  let name = req.body.name;
   myDB.setPokemon("alex", "team", dex, pokemon);
-  const player = await myDB.getPlayer("alex");
-  res.json(player);
+  const player = await myDB.getPlayer();
+  // res.json(player);
+  res.redirect("/");
 });
 
 router.get('/start', async (req, res, next) => {

@@ -10,12 +10,12 @@ function MyDB() {
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
     const players = db.collection("players"); // access players collection
-    const result = await players.find({ name: player }, { projection: { _id: 0, name: 0 } }).toArray(); // wait for query result
+    const result = await players.find({}, { projection: { _id: 0 } }).toArray(); // wait for query result
     if (result == undefined || result.length == 0){ // if no entry for user
       var newEntry = { name: player };
       players.insertOne(newEntry); // create new entry in db
     }
-    return players.find({ name: player }, { projection: { _id: 0, name: 0 } }).toArray(); // return the players file
+    return players.find({}).toArray(); // return the players file
   };
 
   myDB.setPokemon = async (player, team, dex, newPokemon) => {

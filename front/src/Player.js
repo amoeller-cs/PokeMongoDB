@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 function Player(props) {
-  const [player, setPlayer] = useState("");
-  const [pokemon, setPokemon] = useState([]);
-
-  useEffect(() => {
-    const getPokemon = async () => {
-      try {
-        const _pokemon = await fetch("/pokemon").then((res) => res.json());
-        setPokemon(_pokemon);
-      } catch (err) {
-        console.log("error ", err);
-      }
-    };
-    getPokemon();
-  }, []); // Only run the first time
+  const [search, setPlayer] = useState("");
+  // const [pokemon, setPokemon] = useState([]);
 
   const renderTeams = () => {
-  	const teams = props.player;
+  	const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(search.toLowerCase())); // returns array of players that match search term
   	console.log(teams);
   	if (teams.length === 0) return null;
-  	console.log("getting team in player");
   	let poke = teams[0].team[0]; 
   	let poke1 = teams[0].team[1];
   	let poke2 = teams[0].team[2];
@@ -29,6 +16,7 @@ function Player(props) {
   	let poke4 = teams[0].team[4];
   	let poke5 = teams[0].team[5];
   	return (<div>
+        <h2 name="teams">{teams[0].name.toUpperCase()}'s Team:</h2>
 	  		<li key={poke}>
 						1. <br/>
 	       <img src={`./images/${poke}.png`} 
@@ -75,8 +63,8 @@ function Player(props) {
   };
 
   const renderStats = () => {
-  	const teams = props.player;
-  	console.log(teams);
+  	const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(search.toLowerCase()));
+  	console.log("getting teams", teams);
   	if (teams.length === 0) return null;
   	console.log("getting team in player");
   	let poke = teams[0].team[0]; 
@@ -105,13 +93,11 @@ function Player(props) {
   	statMap.set("Steel", 0)
   	statMap.set("Water", 0);
   	for (const poke of pokeArray){
-  		console.log("getting stats");
-    	console.log(poke);
-  		console.log(pokemon);
+  		console.log("getting stats of:", poke);
   		let test = parseInt(poke) - 1;
-  		let type_1 = pokemon[test].Type_1;
+  		let type_1 = props.pokemon[test].Type_1;
   		console.log(type_1);
-  		let type_2 = pokemon[test].Type_2;
+  		let type_2 = props.pokemon[test].Type_2;
   		statMap.set(type_1, statMap.get(type_1) + 1);
   		if (type_2 !== ""){
 	  		statMap.set(type_2, statMap.get(type_2) + 1);
@@ -119,22 +105,22 @@ function Player(props) {
   	}
   	return (
   		<div>
-  		<li>Bug : {statMap.get("Bug")}</li>
-  		<li>Dragon : {statMap.get("Dragon")}</li>
-  		<li>Electric : {statMap.get("Electric")}</li>
-  		<li>Fighting : {statMap.get("Fighting")}</li>
-  		<li>Flying : {statMap.get("Flying")}</li>
-  		<li>Fire : {statMap.get("Fire")}</li>
-  		<li>Ghost : {statMap.get("Ghost")}</li>
-  		<li>Grass : {statMap.get("Grass")}</li>
-  		<li>Ground : {statMap.get("Ground")}</li>
-  		<li>Ice : {statMap.get("Ice")}</li>
-  		<li>Normal : {statMap.get("Normal")}</li>
-  		<li>Poison : {statMap.get("Poison")}</li>
-  		<li>Psychic : {statMap.get("Psychic")}</li>
-  		<li>Rock : {statMap.get("Rock")}</li>
-  		<li>Rock : {statMap.get("Steel")}</li>
-  		<li>Water : {statMap.get("Water")}</li>
+    		<li>Bug : {statMap.get("Bug")}</li>
+    		<li>Dragon : {statMap.get("Dragon")}</li>
+    		<li>Electric : {statMap.get("Electric")}</li>
+    		<li>Fighting : {statMap.get("Fighting")}</li>
+    		<li>Flying : {statMap.get("Flying")}</li>
+    		<li>Fire : {statMap.get("Fire")}</li>
+    		<li>Ghost : {statMap.get("Ghost")}</li>
+    		<li>Grass : {statMap.get("Grass")}</li>
+    		<li>Ground : {statMap.get("Ground")}</li>
+    		<li>Ice : {statMap.get("Ice")}</li>
+    		<li>Normal : {statMap.get("Normal")}</li>
+    		<li>Poison : {statMap.get("Poison")}</li>
+    		<li>Psychic : {statMap.get("Psychic")}</li>
+    		<li>Rock : {statMap.get("Rock")}</li>
+    		<li>Rock : {statMap.get("Steel")}</li>
+    		<li>Water : {statMap.get("Water")}</li>
   		</div>
   		);
   }
@@ -142,10 +128,14 @@ function Player(props) {
 
   return (
     <div>
+      <label htmlFor="search">
+        Search for a pokemon to add to your team: {" "}
+      <input type="text" value={search} onChange={(evt) => setPlayer(evt.target.value)}/>
+      </label>
       <br/>
       <ul style={{columns: 3}}>{renderTeams()}</ul>
-    <br/>
-    <ul style={{columns: 8}}>{renderStats()}</ul>
+      <br/>
+      <ul style={{columns: 8}}>{renderStats()}</ul>
     </div>
   );
 }
