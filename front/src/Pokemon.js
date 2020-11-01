@@ -21,26 +21,29 @@ function Pokemon(props) {
           Speed: {p.Spe} <br/>
           Type: {p.Type_1} <br/>
           Type II: {p.Type_2} <br/>
-          <label for="position">Choose the position: </label>
-          <select name="position" id="position">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-          <br/>
-          <button id="addPokemon" onClick={addPokemon}>Add this pokemon</button>
+          <form action="/updateTeam" method="post">
+            <label for="position">Choose the position: </label>
+            <select name="position" id="position">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <input type="hidden" name="newPokemon" id="newPokemon" value={`${p._id}`} />
+            <br/>
+            <button type="submit" id="addPokemon" onClick={addPokemon}>Add this pokemon</button>
+          </form>
           <br/>
         </li>
       ));
   };
-
+  
   const addPokemon = () => {
     return props.pokemon;
   };
-  
+
   console.log("rendering Pokemon", search);
 
   return (
