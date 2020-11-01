@@ -8,6 +8,7 @@ import Player from "./Player.js"
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
+  const [player, setPlayer] = useState([]);
   // const [team, setTeam] = useState([]);
 
   useEffect(() => {
