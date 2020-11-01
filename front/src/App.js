@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import Pokemon from "./Pokemon.js"
+import Player from "./Player.js"
 
 
 function App() {
