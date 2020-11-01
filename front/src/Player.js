@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 function Player(props) {
   const [search, setPlayer] = useState("");
-  // const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState([]);
+	
+  useEffect(() => {
+    const getPokemon = async () => {
+      try {
+        const _pokemon = await fetch("/pokemon").then((res) => res.json());
+        setPokemon(_pokemon);
+      } catch (err) {
+        console.log("error ", err);
+      }
+    };
+    getPokemon();
+  }, []); // Only run the first time
 
   const renderTeams = () => {
   	const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(search.toLowerCase())); // returns array of players that match search term
