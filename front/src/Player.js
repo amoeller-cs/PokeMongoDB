@@ -80,3 +80,21 @@ Player.propTypes ={
 };
 
 export default Player;
+
+
+// function Player(props) {
+//   const [search, setPlayer] = useState("");
+
+//   const renderTeams = () => {
+//     return props.player
+//       .map((t) =>(
+//         <li key={t.name}>
+//             (#{t[0].team[0]}) <br/>
+//          <img src={`./images/${t[0].team[0]}.png`} 
+//            alt={`(#${t[0].team[0]}) Sprite`} />
+//          <br/>
+//          <br/>
+//        </li>
+//       ));
+//   }
+

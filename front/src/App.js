@@ -9,7 +9,7 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
   const [player, setPlayer] = useState([]);
-  const [showTeam, setShowTeam] = useState(false);
+  const [showTeam, setShowTeam] = useState(true);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -35,6 +35,8 @@ function App() {
     };
     getPlayer();
   }, []);
+
+  console.log("got player", player);
 
   return (
     <div className="App container text-left">
@@ -63,6 +65,7 @@ function App() {
           onClick={(evt) => {
             evt.preventDefault();
             setShowPokemon(true);
+            setShowTeam(false);
           }}
         >
           Pokemon List<span className="sr-only">(current)</span>
