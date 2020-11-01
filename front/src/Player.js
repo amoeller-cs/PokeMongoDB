@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 function Player(props) {
   const [player, setPlayer] = useState("");
+  const [pokemon, setPokemon] = useState([]);
+
+  useEffect(() => {
+    const getPokemon = async () => {
+      try {
+        const _pokemon = await fetch("/pokemon").then((res) => res.json());
+        setPokemon(_pokemon);
+      } catch (err) {
+        console.log("error ", err);
+      }
+    };
+    getPokemon();
+  }, []); // Only run the first time
 
   const renderTeams = () => {
   	const teams = props.player;
@@ -16,7 +29,6 @@ function Player(props) {
   	let poke4 = teams[0].team[4];
   	let poke5 = teams[0].team[5];
   	return (<div>
-  		<ul style={{columns: 3}}>
 	  		<li key={poke}>
 						1. <br/>
 	       <img src={`./images/${poke}.png`} 
@@ -59,20 +71,81 @@ function Player(props) {
 	        <br/>
 	        <br/>
 	      </li>
-	      </ul>
       </div>);
   };
 
+  const renderStats = () => {
+  	const teams = props.player;
+  	console.log(teams);
+  	if (teams.length === 0) return null;
+  	console.log("getting team in player");
+  	let poke = teams[0].team[0]; 
+  	let poke1 = teams[0].team[1];
+  	let poke2 = teams[0].team[2];
+  	let poke3 = teams[0].team[3];
+  	let poke4 = teams[0].team[4];
+  	let poke5 = teams[0].team[5];
+  	const pokeArray = [poke, poke1, poke2, poke3, poke4, poke5];
+  	console.log(pokeArray);
+  	let statMap = new Map();
+  	statMap.set("Bug", 0);
+  	statMap.set("Dragon", 0);
+  	statMap.set("Electric", 0);
+  	statMap.set("Fighting", 0);
+  	statMap.set("Flying", 0);
+  	statMap.set("Fire", 0);
+  	statMap.set("Ghost", 0);
+  	statMap.set("Grass", 0);
+  	statMap.set("Ground", 0);
+  	statMap.set("Ice", 0);
+  	statMap.set("Normal", 0);
+  	statMap.set("Poison", 0);
+  	statMap.set("Psychic", 0);
+  	statMap.set("Rock", 0);
+  	statMap.set("Steel", 0)
+  	statMap.set("Water", 0);
+  	for (const poke of pokeArray){
+  		console.log("getting stats");
+    	console.log(poke);
+  		console.log(pokemon);
+  		let test = parseInt(poke) - 1;
+  		let type_1 = pokemon[test].Type_1;
+  		console.log(type_1);
+  		let type_2 = pokemon[test].Type_2;
+  		statMap.set(type_1, statMap.get(type_1) + 1);
+  		if (type_2 !== ""){
+	  		statMap.set(type_2, statMap.get(type_2) + 1);
+  		}
+  	}
+  	return (
+  		<div>
+  		<li>Bug : {statMap.get("Bug")}</li>
+  		<li>Dragon : {statMap.get("Dragon")}</li>
+  		<li>Electric : {statMap.get("Electric")}</li>
+  		<li>Fighting : {statMap.get("Fighting")}</li>
+  		<li>Flying : {statMap.get("Flying")}</li>
+  		<li>Fire : {statMap.get("Fire")}</li>
+  		<li>Ghost : {statMap.get("Ghost")}</li>
+  		<li>Grass : {statMap.get("Grass")}</li>
+  		<li>Ground : {statMap.get("Ground")}</li>
+  		<li>Ice : {statMap.get("Ice")}</li>
+  		<li>Normal : {statMap.get("Normal")}</li>
+  		<li>Poison : {statMap.get("Poison")}</li>
+  		<li>Psychic : {statMap.get("Psychic")}</li>
+  		<li>Rock : {statMap.get("Rock")}</li>
+  		<li>Rock : {statMap.get("Steel")}</li>
+  		<li>Water : {statMap.get("Water")}</li>
+  		</div>
+  		);
+  }
+
+
   return (
     <div>
-      <label htmlFor="player">
-        Enter your username: {" "}
-      <input type="text" value={player} onChange={(evt) =>
-      	setPlayer(evt.target.value)}/>
-      </label><br/>
-  
       <br/>
-      <ul>{renderTeams()}</ul>
+      <ul style={{columns: 3}}>{renderTeams()}</ul>
+    <br/>
+    <ul style={{columns: 8}}>{renderStats()}</ul>
     </div>
   );
 }
