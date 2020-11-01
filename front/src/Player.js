@@ -13,15 +13,62 @@ function Player(props) {
   	for (let y = 0; y < 6; y++){
   		console.log("getting team in player");
   		console.log(teams[0].team[y]);
-  		let poke = teams[0].team[y];
-  		toReturn += <li key={poke}>
-						(#{poke}) <br/>
-        <img src={`./images/${poke}.png`} 
-          alt={`(#${poke}) Sprite`} />
-        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
-        <br/>
-        <br/>
-      </li>
+  		let poke = teams[0].team[0]; 
+  		let poke1 = teams[0].team[1];
+  		let poke2 = teams[0].team[2];
+  		let poke3 = teams[0].team[3];
+  		let poke4 = teams[0].team[4];
+  		let poke5 = teams[0].team[5];
+  		return (<div>
+	  			<li key={poke}>
+							(#{poke}) <br/>
+	        <img src={`./images/${poke}.png`} 
+	          alt={`(#${poke}) Sprite`} />
+	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
+	        <br/>
+	        <br/>
+	      </li>
+	      <li key={poke1}>
+							(#{poke1}) <br/>
+	        <img src={`./images/${poke1}.png`} 
+	          alt={`(#${poke1}) Sprite`} />
+	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
+	        <br/>
+	        <br/>
+	      </li>
+	      <li key={poke2}>
+							(#{poke2}) <br/>
+	        <img src={`./images/${poke2}.png`} 
+	          alt={`(#${poke2}) Sprite`} />
+	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
+	        <br/>
+	        <br/>
+	      </li>
+	      <li key={poke3}>
+							(#{poke3}) <br/>
+	        <img src={`./images/${poke3}.png`} 
+	          alt={`(#${poke3}) Sprite`} />
+	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
+	        <br/>
+	        <br/>
+	      </li>
+	      <li key={poke4}>
+							(#{poke4}) <br/>
+	        <img src={`./images/${poke4}.png`} 
+	          alt={`(#${poke4}) Sprite`} />
+	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
+	        <br/>
+	        <br/>
+	      </li>
+	      <li key={poke5}>
+							(#{poke5}) <br/>
+	        <img src={`./images/${poke5}.png`} 
+	          alt={`(#${poke5}) Sprite`} />
+	        <input type="submit" value="Switch this pokemon" id="pokeToSwitch"/>
+	        <br/>
+	        <br/>
+	      </li>
+      </div>)
   	}
   	console.log(toReturn);
   	return toReturn;
