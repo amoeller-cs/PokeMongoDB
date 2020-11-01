@@ -22,7 +22,7 @@ function Pokemon(props) {
           Type: {p.Type_1} <br/>
           Type II: {p.Type_2} <br/>
           <form action="/updateTeam" method="post">
-            <label for="position">Choose the position: </label>
+            <label htmlFor="position">Choose the position: <br/></label>
             <select name="position" id="position">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -54,7 +54,7 @@ function Pokemon(props) {
       </label>
       <br/>
   
-      <ul>{renderPokemon()}</ul>
+      <ul style={{columns: 3}}>{renderPokemon()}</ul>
     </div>
   );
 }
