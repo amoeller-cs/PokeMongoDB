@@ -16,48 +16,50 @@ function Player(props) {
   	let poke4 = teams[0].team[4];
   	let poke5 = teams[0].team[5];
   	return (<div>
+  		<ul style={{columns: 3}}>
 	  		<li key={poke}>
-						(#{poke}) <br/>
+						1. <br/>
 	       <img src={`./images/${poke}.png`} 
 	         alt={`(#${poke}) Sprite`} />
 	       <br/>
 	       <br/>
 	     </li>
-	     <li key={poke1}>
-						(#{poke1}) <br/>
-	       <img src={`./images/${poke1}.png`} 
-	         alt={`(#${poke1}) Sprite`} />
+	     <li key={poke3}>
+						4. <br/>
+	       <img src={`./images/${poke3}.png`} 
+	         alt={`(#${poke3}) Sprite`} />
 	       <br/>
 	       <br/>
 	     </li>
-	     <li key={poke2}>
-						(#{poke2}) <br/>
-	       <img src={`./images/${poke2}.png`} 
-	         alt={`(#${poke2}) Sprite`} />       
+	     <li key={poke1}>
+						2. <br/>
+	       <img src={`./images/${poke1}.png`} 
+	         alt={`(#${poke1}) Sprite`} />       
          <br/>
 	       <br/>
 	      </li>
-	      <li key={poke3}>
-							(#{poke3}) <br/>
-	        <img src={`./images/${poke3}.png`} 
-	          alt={`(#${poke3}) Sprite`} />
-	        <br/>
-	        <br/>
-	      </li>
 	      <li key={poke4}>
-							(#{poke4}) <br/>
+							5. <br/>
 	        <img src={`./images/${poke4}.png`} 
 	          alt={`(#${poke4}) Sprite`} />
 	        <br/>
 	        <br/>
 	      </li>
+	      <li key={poke2}>
+							3. <br/>
+	        <img src={`./images/${poke2}.png`} 
+	          alt={`(#${poke2}) Sprite`} />
+	        <br/>
+	        <br/>
+	      </li>
 	      <li key={poke5}>
-							(#{poke5}) <br/>
+							6. <br/>
 	        <img src={`./images/${poke5}.png`} 
 	          alt={`(#${poke5}) Sprite`} />
 	        <br/>
 	        <br/>
 	      </li>
+	      </ul>
       </div>);
   };
 
@@ -80,21 +82,3 @@ Player.propTypes ={
 };
 
 export default Player;
-
-
-// function Player(props) {
-//   const [search, setPlayer] = useState("");
-
-//   const renderTeams = () => {
-//     return props.player
-//       .map((t) =>(
-//         <li key={t.name}>
-//             (#{t[0].team[0]}) <br/>
-//          <img src={`./images/${t[0].team[0]}.png`} 
-//            alt={`(#${t[0].team[0]}) Sprite`} />
-//          <br/>
-//          <br/>
-//        </li>
-//       ));
-//   }
-
