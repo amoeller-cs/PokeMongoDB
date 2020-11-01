@@ -29,7 +29,7 @@ router.get('/pokemon', async (req, res, next) => {
 });
 
 router.get('/getTeam', async (req, res, next) => {
-  myDB.setPokemon("alex", "newTeam", 0, "100"); // (player, team, dex(team index), newPokemon(list #))
+  myDB.setPokemon("alex", "team", 0, "100"); // (player, team, dex(team index), newPokemon(list #))
   const player = await myDB.getPlayer("alex");
   res.json(player);
 });
@@ -41,7 +41,7 @@ router.get('/start', async (req, res, next) => {
 });
 
 router.get('/newTeam', async (req, res, next) => {
-  myDB.createTeam("alex", "newTeam");
+  myDB.createTeam("alex", "team");
   const player = await myDB.getPlayer("alex");
   res.json(player);
 });
