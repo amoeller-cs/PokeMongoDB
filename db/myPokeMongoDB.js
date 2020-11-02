@@ -5,16 +5,11 @@ function MyDB() {
 
   const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
 
-  myDB.getPlayer = async (player) => {
+  myDB.getPlayer = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
     const players = db.collection("players"); // access players collection
-    const result = await players.find({}, { projection: { _id: 0 } }).toArray(); // wait for query result
-    if (result == undefined || result.length == 0){ // if no entry for user
-      var newEntry = { name: player };
-      players.insertOne(newEntry); // create new entry in db
-    }
     return players.find({}).toArray(); // return the players file
   };
 
@@ -33,30 +28,21 @@ function MyDB() {
     await client.connect();
     const db = client.db("pokedb");
     const players = db.collection("players");
-    const newTeamArray = ["001", "004", "007", "025", "016", "019"];
     players.insertOne({ name: player, team: ["001", "004", "007", "025", "016", "019"] });
     return;
   };
 
-  myDB.getPokemon = async (pokeDBSearch) => {
-    // console.log(`getting pokemon: ${pokeDBSearch}`);
+  myDB.getPokemon = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
-
     await client.connect();
-
     const db = client.db("pokedb"); // access pokemon db
     const pokemon = db.collection("pokemon"); // access pokemon collection
-    const query = {}; // search for pokeDBSearch
-    // const result = await pokemon.find(query); // wait for query result
-    // if (result == undefined || result.length == 0){ // if no entry for pokemon or pokemon does not exist
-    //   console.log(`could not find ${pokeDBSearch}`);
-    // }
+    const query = {};
     return pokemon.find(query).sort({ _id: 1}).toArray().finally(() => client.close());
   };
 
   myDB.loadPokemon = async() => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
-
     await client.connect();
 
     const db = client.db("pokedb"); // access pokemon db
