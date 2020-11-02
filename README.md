@@ -5,7 +5,7 @@ Alex Moeller and Ely Lam
 Made for: https://johnguerra.co/classes/webDevelopment_fall_2020/
 # Project Objective: 
 Develop a web app that allows users to create their own team of Pokemon and see its stats breakdown.
-# Screenshot
+# Screenshot:
 # Instructions to build:
   Clone repository from Github\
   Install Node\
