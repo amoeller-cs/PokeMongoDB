@@ -26,6 +26,22 @@ function User(props) {
     );
   }
 
+  function haveUser(event) {
+    const users = props.player;
+    let len = users.length;
+    console.log("players:", users);
+    for (let x = 0; x < len; x++) {
+      console.log("checking user");
+      if (users[x].name === username) {
+        alert("Error: user already exists.");
+        return;
+      }
+    }
+    event.preventDefault();
+    props.handleChange(username);
+    sessionStorage.setItem("username", username);
+  }
+
   return (
     <div>
       <div>
@@ -51,7 +67,7 @@ function User(props) {
       </div>
       <br />
       <div>
-        <form action="/newUser" method="post">
+        <form action="/newUser" method="post" onSubmit={haveUser}>
           <input type="text" name="newUsername" onChange={usernameChange} />
           <input type="submit" value="Create User" />
         </form>
