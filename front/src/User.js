@@ -29,22 +29,30 @@ function User(props) {
   return (
     <div>
       <div>
+        <p>
+          Welcome to PokeMongoDB! To get started create an account and login
+          from this page (note that creating an account may lead you away from
+          the login page). Once you've logged in, check out your team by
+          clicking Team Page in the NavBar. The Team Page will display your
+          Pokemon as well as the sum of their types! If you would like to change
+          a Pokemon in your team, click on Pokemon List in the NavBar. From
+          there, you can search for the Pokemon you would like in your team with
+          the search form, or scroll until you find one you like. Choose the
+          position you would like to place the Pokemon in your team and click
+          the add Pokemon button to update your team!
+        </p>
+      </div>
+      <br />
+      <div>
         <form onSubmit={submit}>
-          <input
-            type="text"
-            placeholder="username"
-            onChange={usernameChange}
-          />
+          <input type="text" placeholder="username" onChange={usernameChange} />
           <input type="submit" value="Login" />
         </form>
       </div>
+      <br />
       <div>
         <form action="/newUser" method="post">
-          <input
-            type="text"
-            name="newUsername"
-            onChange={usernameChange}
-          />
+          <input type="text" name="newUsername" onChange={usernameChange} />
           <input type="submit" value="Create User" />
         </form>
       </div>
