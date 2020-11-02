@@ -28,13 +28,13 @@ function MyDB() {
     return;
   };
 
-  myDB.createTeam = async (player, team) => {
+  myDB.createTeam = async (player) => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
     const db = client.db("pokedb");
     const players = db.collection("players");
     const newTeamArray = ["001", "004", "007", "025", "016", "019"];
-    players.updateOne({ name: player }, { $set: { [team]: newTeamArray } });
+    players.insertOne({ name: player, team: ["001", "004", "007", "025", "016", "019"] });
     return;
   };
 
