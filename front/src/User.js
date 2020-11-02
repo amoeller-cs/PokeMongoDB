@@ -52,9 +52,7 @@ function User(props) {
         return;
       }
     }
-    alert(
-      "Error: user does not exist."
-    );
+    alert("Error: user does not exist.");
   }
 
   return (
@@ -83,14 +81,24 @@ function User(props) {
       <br />
       <div>
         <form action="/newUser" method="post" onSubmit={haveUser}>
-          <input type="text" placeholder="Username" name="newUsername" onChange={usernameChange} />
+          <input
+            type="text"
+            placeholder="Username"
+            name="newUsername"
+            onChange={usernameChange}
+          />
           <input type="submit" value="Create User" />
         </form>
       </div>
       <br />
       <div>
         <form action="/deleteUser" method="post" onSubmit={deleteUser}>
-          <input type="text" placeholder="Username" name="deletedUser" onChange={usernameChange} />
+          <input
+            type="text"
+            placeholder="Username"
+            name="deletedUser"
+            onChange={usernameChange}
+          />
           <input type="submit" value="Delete User" />
         </form>
       </div>
