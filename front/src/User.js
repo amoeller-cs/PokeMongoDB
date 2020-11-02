@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 function User(props) {
 	const [username, setUsername] = useState("");
@@ -8,8 +9,19 @@ function User(props) {
 	}
 
 	function submit(event) {
-		event.preventDefault();
-		props.handleChange(username);
+		const users = props.player;
+		let len = users.length;
+		console.log("players:", users);
+		for (let x = 0; x < len; x++){
+			console.log("checking user");
+			if (users[x].name === username){
+				event.preventDefault();
+				props.handleChange(username);
+				sessionStorage.setItem("username", username);
+				return;
+			}
+		}
+		alert("Error: no user with that name. Try logging in again or create a new account.");
 	}
 
 	return (
@@ -29,5 +41,9 @@ function User(props) {
 		</div>
 	);
 }
+
+User.propTypes ={
+  player: PropTypes.array,
+};
 
 export default User;
