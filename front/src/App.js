@@ -24,7 +24,7 @@ function App() {
       }
     };
     getPokemon();
-  }, []); // Only run the first time
+  }, []); // Only run once; fetches pokemon list
   
   useEffect(() => {
     const getPlayer = async () => {
@@ -37,11 +37,11 @@ function App() {
       }
     };
     getPlayer();
-  }, []);
+  }, []); // Only run once; fetches user team
 
   console.log("got player", player);
 
-  function handleChange(username){
+  function handleChange(username) { // change user
     console.log(username);
     setUser(username);
     console.log("app: user changed");
@@ -62,7 +62,7 @@ function App() {
         </a>
         <a
           className="nav-item active nav-link"
-          href="teamEdit"
+          href="teamView" // view user team
           onClick={(evt) => {
             evt.preventDefault();
             setShowTeam(true);
@@ -74,7 +74,7 @@ function App() {
         </a>
         <a
           className="nav-item active nav-link"
-          href="pokeList"
+          href="pokeList" // list of pokemon to add to team
           onClick={(evt) => {
             evt.preventDefault();
             setShowPokemon(true);
@@ -86,7 +86,7 @@ function App() {
         </a>
         <a
           className="nav-item active mavbar-nav nav-link navbar-right"
-          href="userlogin"
+          href="userlogin" // change user team page
           onClick={(evt) => {
             evt.preventDefault();
             setShowTeam(false);
@@ -113,18 +113,6 @@ function App() {
   );
 }
 
-// Image from https://www.freeiconspng.com/img/45343
-// <a
-//   className="nav-item active nav-link"
-//   href="about"
-//   onClick={(evt) => {
-//     evt.preventDefault();
-//     setShowTeam(false);
-//     setShowPokemon(false);
-//   }}
-// >
-//   About PokeMongoDB
-// </a>
-
+// Navbar image from https://www.freeiconspng.com/img/45343
 
 export default App;

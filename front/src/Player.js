@@ -5,7 +5,6 @@ function Player(props) {
   const [search, setPlayer] = useState("");
 
   const renderTeams = () => {
-  	//const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(search.toLowerCase())); // returns array of players that match search term
   	const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(props.user));
   	console.log(teams);
   	if (teams.length === 0) return null;
@@ -18,47 +17,41 @@ function Player(props) {
   	return (
       <div>
     		<li key={poke}>
-					1. <br/>
           <img src={`./images/${poke}.png`} 
            alt={`(#${poke}) Sprite`} />
           <br/>
           <br/>
         </li>
-        <li key={poke3}>
-          4. <br/>
-          <img src={`./images/${poke3}.png`} 
-          alt={`(#${poke3}) Sprite`} />
-          <br/>
-          <br/>
-        </li>
         <li key={poke1}>
-          2. <br/>
           <img src={`./images/${poke1}.png`} 
           alt={`(#${poke1}) Sprite`} />       
           <br/>
           <br/>
         </li>
-        <li key={poke4}>
-          5. <br/>
-          <img src={`./images/${poke4}.png`} 
-          alt={`(#${poke4}) Sprite`} />
-          <br/>
-          <br/>
-        </li>
         <li key={poke2}>
-          3. <br/>
           <img src={`./images/${poke2}.png`} 
           alt={`(#${poke2}) Sprite`} />
           <br/>
           <br/>
         </li>
+        <li key={poke3}>
+          <img src={`./images/${poke3}.png`} 
+          alt={`(#${poke3}) Sprite`} />
+          <br/>
+          <br/>
+        </li>
+        <li key={poke4}>
+          <img src={`./images/${poke4}.png`} 
+          alt={`(#${poke4}) Sprite`} />
+          <br/>
+          <br/>
+        </li>
         <li key={poke5}>
-          6. <br/>
           <img src={`./images/${poke5}.png`} 
           alt={`(#${poke5}) Sprite`} />
           <br/>
           <br/>
-          </li>
+        </li>
       </div>);
   };
 
@@ -125,27 +118,22 @@ function Player(props) {
     		<li>Rock : {statMap.get("Steel")}</li>
     		<li>Water : {statMap.get("Water")}</li>
   		</div>
-  		);
+		);
   }
 
 
   return (
     <div>
       <br/>
-      <ul style={{columns: 3}}>{renderTeams()}</ul>
+      <ol>{renderTeams()}</ol>
       <br/>
       <ul style={{columns: 8}}>{renderStats()}</ul>
     </div>
   );
 }
 
-Player.propTypes ={
+Player.propTypes = {
   player: PropTypes.array,
 };
-
-// <label htmlFor="search">
-//         Enter your username: {" "}
-//       <input type="text" value={search} onChange={(evt) => setPlayer(evt.target.value)}/>
-//       </label>
 
 export default Player;

@@ -10,12 +10,12 @@ router.get('/', (req, res, next) => {
 
 router.get('/player', async (req, res, next) => {
   const player = await myDB.getPlayer("alex");
-  res.json(player);
+  res.json(player); // get player db; default "alex"
 });
 
 router.get('/pokemon', async (req, res, next) => {
   const pokemon = await myDB.getPokemon();
-  res.json(pokemon);
+  res.json(pokemon); // get pokemon db
 });
 
 router.post('/updateTeam', async (req, res, next) => {
@@ -39,7 +39,7 @@ router.post('/newUser', async (req, res, next) => {
   let user = req.body.newUsername;
   myDB.createTeam(user);
   const player = await myDB.getPlayer(user);
-  res.redirect("/");
+  res.redirect("/"); // redirect to home page
 });
 
 module.exports = router;

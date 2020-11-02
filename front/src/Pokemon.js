@@ -50,13 +50,12 @@ function Pokemon(props) {
       <input type="text" value={search} onChange={(evt) => setPokemon(evt.target.value)}/>
       </label>
       <br/>
-  
-      <ul style={{columns: 3}}>{renderPokemon()}</ul>
+      <ol>{renderPokemon()}</ol>
     </div>
   );
 }
 
-Pokemon.propTypes ={
+Pokemon.propTypes = {
   pokemon: PropTypes.array,
 };
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 
 function User(props) {
 	const [username, setUsername] = useState("");

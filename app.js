@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const teamEditRouter = require('./routes/teamEdit');
 
 const app = express();
 
@@ -15,6 +14,5 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'front/build')));
 
 app.use('/', indexRouter);
-app.use('/teamEdit', teamEditRouter);
 
 module.exports = app;
