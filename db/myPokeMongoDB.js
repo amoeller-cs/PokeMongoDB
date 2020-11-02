@@ -41,6 +41,14 @@ function MyDB() {
     return pokemon.find(query).sort({ _id: 1}).toArray().finally(() => client.close());
   };
 
+  myDB.deletePlayer = async (user) => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    const db = client.db("pokedb"); // access pokemon db
+    const player = db.collection("players"); // access player collection
+    return player.deleteMany({ name: user });
+  };
+
   myDB.loadPokemon = async() => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
