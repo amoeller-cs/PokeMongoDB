@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./styles/Pokemon.css";
 
 function Pokemon(props) {
   const [search, setPokemon] = useState("");
