@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 function Player(props) {
   const [search, setPlayer] = useState("");
-  // const [pokemon, setPokemon] = useState([]);
 
   const renderTeams = () => {
-  	const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(search.toLowerCase())); // returns array of players that match search term
+  	//const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(search.toLowerCase())); // returns array of players that match search term
+  	const teams = props.player.filter((t) => t.name.toLowerCase().startsWith(props.user));
   	console.log(teams);
   	if (teams.length === 0) return null;
   	let poke = teams[0].team[0]; 
