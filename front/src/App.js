@@ -10,9 +10,9 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
   const [player, setPlayer] = useState([]);
-  const [showTeam, setShowTeam] = useState(false);
+  const [showTeam, setShowTeam] = useState(true);
   const [user, setUser] = useState("");
-  const [showUserEnter, setShowUserEnter] = useState(true);
+  const [showUserEnter, setShowUserEnter] = useState(false);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -45,10 +45,13 @@ function App() {
     console.log(username);
     setUser(username);
     console.log("app: user changed");
+    setShowTeam(true);
+    setShowPokemon(false);
+    setShowUserEnter(false);
   }
 
   return (
-    <div className="App container text-left">
+    <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
           <img src="./pika.png" 
@@ -56,18 +59,6 @@ function App() {
             title="Pikachu"
             width="60"/>
           PokeMongoDB
-        </a>
-        <a
-          className="nav-item active nav-link"
-          href="userlogin"
-          onClick={(evt) => {
-            evt.preventDefault();
-            setShowTeam(false);
-            setShowPokemon(false);
-            setShowUserEnter(true);
-          }}
-        >
-          Change User<span className="sr-only">(current)</span>
         </a>
         <a
           className="nav-item active nav-link"
@@ -79,7 +70,7 @@ function App() {
             setShowUserEnter(false);
           }}
         >
-          Team Edit<span className="sr-only">(current)</span>
+          Team Page<span className="sr-only">(current)</span>
         </a>
         <a
           className="nav-item active nav-link"
@@ -93,17 +84,31 @@ function App() {
         >
           Pokemon List<span className="sr-only">(current)</span>
         </a>
+        <a
+          className="nav-item active mavbar-nav nav-link navbar-right"
+          href="userlogin"
+          onClick={(evt) => {
+            evt.preventDefault();
+            setShowTeam(false);
+            setShowPokemon(false);
+            setShowUserEnter(true);
+          }}
+        >
+          Change User: {user}<span className="sr-only">(current)</span>
+        </a>
       </nav>
-      <h1>Build Your Best Team!</h1>
-      {showUserEnter ? <User handleChange={handleChange}></User> : ""}
-      {showPokemon ? <Pokemon player={player} pokemon={pokemon} user={user}></Pokemon> : ""}
-      {showTeam ? <Player player={player} pokemon={pokemon} user={user}></Player> : ""}
-      <br/>
-      <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
-        alt="Pokeball" 
-        title="Pokeball"
-        width="30"/>
-      </footer>
+      <div class="container text-left">
+        <h1>Build Your Best Team!</h1>
+        {showUserEnter ? <User handleChange={handleChange}></User> : ""}
+        {showPokemon ? <Pokemon player={player} pokemon={pokemon} user={user}></Pokemon> : ""}
+        {showTeam ? <Player player={player} pokemon={pokemon} user={user}></Player> : ""}
+        <br/>
+        <footer>Created by Alex Moeller and Ely Lam 2020 <img src="./pokeball-favicon.png" 
+          alt="Pokeball" 
+          title="Pokeball"
+          width="30"/>
+        </footer>
+      </div>
     </div>
   );
 }

@@ -131,10 +131,6 @@ function Player(props) {
 
   return (
     <div>
-      <label htmlFor="search">
-        Enter your username: {" "}
-      <input type="text" value={search} onChange={(evt) => setPlayer(evt.target.value)}/>
-      </label>
       <br/>
       <ul style={{columns: 3}}>{renderTeams()}</ul>
       <br/>
@@ -146,5 +142,10 @@ function Player(props) {
 Player.propTypes ={
   player: PropTypes.array,
 };
+
+// <label htmlFor="search">
+//         Enter your username: {" "}
+//       <input type="text" value={search} onChange={(evt) => setPlayer(evt.target.value)}/>
+//       </label>
 
 export default Player;
