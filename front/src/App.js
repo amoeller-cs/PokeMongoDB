@@ -39,6 +39,13 @@ function App() {
     getPlayer();
   }, []);
 
+  useEffect(( ) => {
+    const storedUser = sessionStorage.getItem("username");
+      if (storedUser){
+        setUser(storedUser);
+      };
+  }, []);
+
   console.log("got player", player);
 
   function handleChange(username){
