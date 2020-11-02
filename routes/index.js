@@ -35,10 +35,11 @@ router.get('/start', async (req, res, next) => {
   res.json(pokemon);
 });
 
-router.get('/newTeam', async (req, res, next) => {
-  myDB.createTeam("alex", "newTeam");
-  const player = await myDB.getPlayer("alex");
-  res.json(player);
+router.post('/newUser', async (req, res, next) => {
+  let user = req.body.newUsername;
+  myDB.createTeam(user);
+  const player = await myDB.getPlayer(user);
+  res.redirect("/");
 });
 
 module.exports = router;
