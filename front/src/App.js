@@ -39,6 +39,13 @@ function App() {
     getPlayer();
   }, []); // Only run once; fetches user team
 
+  useEffect(( ) => {
+    const storedUser = sessionStorage.getItem("username");
+      if (storedUser){
+        setUser(storedUser);
+      };
+  }, []);
+
   console.log("got player", player);
 
   function handleChange(username) { // change user
