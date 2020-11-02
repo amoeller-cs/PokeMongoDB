@@ -34,4 +34,16 @@ router.post("/newUser", async (req, res) => {
   res.redirect("/"); // redirect to home page
 });
 
+router.post("/newUser", async (req, res) => {
+  let user = req.body.newUsername;
+  myDB.createTeam(user);
+  res.redirect("/"); // redirect to home page
+});
+
+router.post("/deleteUser", async (req, res) => {
+  let user = req.body.deletedUser;
+  myDB.deletePlayer(user);
+  res.redirect("/"); // redirect to home page
+});
+
 module.exports = router;
