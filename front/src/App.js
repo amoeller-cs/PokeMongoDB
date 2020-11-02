@@ -3,13 +3,16 @@ import "./App.css";
 
 import Pokemon from "./Pokemon.js"
 import Player from "./Player.js"
+import User from "./User.js"
 
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
   const [player, setPlayer] = useState([]);
-  const [showTeam, setShowTeam] = useState(true);
+  const [showTeam, setShowTeam] = useState(false);
+  const [user, setUser] = useState("");
+  const [showUserEnter, setShowUserEnter] = useState(true);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -38,6 +41,12 @@ function App() {
 
   console.log("got player", player);
 
+  function handleChange(username){
+    console.log(username);
+    setUser(username);
+    console.log("app: user changed");
+  }
+
   return (
     <div className="App container text-left">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,11 +59,24 @@ function App() {
         </a>
         <a
           className="nav-item active nav-link"
+          href="userlogin"
+          onClick={(evt) => {
+            evt.preventDefault();
+            setShowTeam(false);
+            setShowPokemon(false);
+            setShowUserEnter(true);
+          }}
+        >
+          Change User<span className="sr-only">(current)</span>
+        </a>
+        <a
+          className="nav-item active nav-link"
           href="teamEdit"
           onClick={(evt) => {
             evt.preventDefault();
             setShowTeam(true);
             setShowPokemon(false);
+            setShowUserEnter(false);
           }}
         >
           Team Edit<span className="sr-only">(current)</span>
@@ -66,12 +88,14 @@ function App() {
             evt.preventDefault();
             setShowPokemon(true);
             setShowTeam(false);
+            setShowUserEnter(false);
           }}
         >
           Pokemon List<span className="sr-only">(current)</span>
         </a>
       </nav>
       <h1>Build Your Best Team!</h1>
+      {showUserEnter ? <User handleChange={handleChange}></User> : ""}
       {showPokemon ? <Pokemon player={player} pokemon={pokemon}></Pokemon> : ""}
       {showTeam ? <Player player={player} pokemon={pokemon}></Player> : ""}
       <br/>
