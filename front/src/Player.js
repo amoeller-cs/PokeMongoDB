@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./styles/Player.css";
 
 function Player(props) {
   const renderTeams = () => {
@@ -122,7 +123,7 @@ function Player(props) {
       <br />
       <ol>{renderTeams()}</ol>
       <br />
-      <ul style={{ columns: 8 }}>{renderStats()}</ul>
+      <ul>{renderStats()}</ul>
     </div>
   );
 }
