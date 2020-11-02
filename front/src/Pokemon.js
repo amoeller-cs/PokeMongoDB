@@ -6,23 +6,31 @@ function Pokemon(props) {
 
   const renderPokemon = () => {
     return props.pokemon
-      .filter((p) => p.Pokemon && p.Pokemon.toLowerCase().startsWith(search.toLowerCase()))
+      .filter(
+        (p) =>
+          p.Pokemon && p.Pokemon.toLowerCase().startsWith(search.toLowerCase())
+      )
       .map((p) => (
         <li key={p._id}>
-          {p.Pokemon} (#{p._id}) <br/>
-          <img src={`./images/${p._id}.png`} 
-            alt={`${p.Pokemon} (#${p._id}) Sprite`} 
-            title={`${p.Pokemon} (#${p._id})`} /> <br/>
-          HP: {p.HP} <br/>
-          ATK: {p.Atk} <br/>
-          DEF: {p.Def} <br/>
-          Special Atk: {p.SpA} <br/>
-          Special Defense: {p.SpD} <br/>
-          Speed: {p.Spe} <br/>
-          Type: {p.Type_1} <br/>
-          Type II: {p.Type_2} <br/>
+          {p.Pokemon} (#{p._id}) <br />
+          <img
+            src={`./images/${p._id}.png`}
+            alt={`${p.Pokemon} (#${p._id}) Sprite`}
+            title={`${p.Pokemon} (#${p._id})`}
+          />{" "}
+          <br />
+          HP: {p.HP} <br />
+          ATK: {p.Atk} <br />
+          DEF: {p.Def} <br />
+          Special Atk: {p.SpA} <br />
+          Special Defense: {p.SpD} <br />
+          Speed: {p.Spe} <br />
+          Type: {p.Type_1} <br />
+          Type II: {p.Type_2} <br />
           <form action="/updateTeam" method="post">
-            <label htmlFor="position">Choose the position: <br/></label>
+            <label htmlFor="position">
+              Choose the position: <br />
+            </label>
             <select name="position" id={`position${p._id}`}>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -31,12 +39,22 @@ function Pokemon(props) {
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <input type="hidden" name="newPokemon" id={`newPokemon${p._id}`} value={`${p._id}`} />
-            <input type="hidden" name="user" id="user" value={`${props.user}`}/>
-            <br/>
+            <input
+              type="hidden"
+              name="newPokemon"
+              id={`newPokemon${p._id}`}
+              value={`${p._id}`}
+            />
+            <input
+              type="hidden"
+              name="user"
+              id="user"
+              value={`${props.user}`}
+            />
+            <br />
             <button type="submit">Add this pokemon</button>
           </form>
-          <br/>
+          <br />
         </li>
       ));
   };
@@ -46,10 +64,14 @@ function Pokemon(props) {
   return (
     <div>
       <label htmlFor="search">
-        Search for a pokemon to add to your team: {" "}
-      <input type="text" value={search} onChange={(evt) => setPokemon(evt.target.value)}/>
+        Search for a pokemon to add to your team:{" "}
+        <input
+          type="text"
+          value={search}
+          onChange={(evt) => setPokemon(evt.target.value)}
+        />
       </label>
-      <br/>
+      <br />
       <ol>{renderPokemon()}</ol>
     </div>
   );
