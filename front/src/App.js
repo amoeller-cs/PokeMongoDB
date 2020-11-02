@@ -24,7 +24,7 @@ function App() {
       }
     };
     getPokemon();
-  }, []); // Only run once; fetches pokemon list
+  }, []); // Only run the first time
   
   useEffect(() => {
     const getPlayer = async () => {
@@ -37,7 +37,7 @@ function App() {
       }
     };
     getPlayer();
-  }, []); // Only run once; fetches user team
+  }, []);
 
   useEffect(( ) => {
     const storedUser = sessionStorage.getItem("username");
@@ -48,7 +48,7 @@ function App() {
 
   console.log("got player", player);
 
-  function handleChange(username) { // change user
+  function handleChange(username){
     console.log(username);
     setUser(username);
     console.log("app: user changed");
@@ -69,7 +69,7 @@ function App() {
         </a>
         <a
           className="nav-item active nav-link"
-          href="teamView" // view user team
+          href="teamEdit"
           onClick={(evt) => {
             evt.preventDefault();
             setShowTeam(true);
@@ -81,7 +81,7 @@ function App() {
         </a>
         <a
           className="nav-item active nav-link"
-          href="pokeList" // list of pokemon to add to team
+          href="pokeList"
           onClick={(evt) => {
             evt.preventDefault();
             setShowPokemon(true);
@@ -93,7 +93,7 @@ function App() {
         </a>
         <a
           className="nav-item active mavbar-nav nav-link navbar-right"
-          href="userlogin" // change user team page
+          href="userlogin"
           onClick={(evt) => {
             evt.preventDefault();
             setShowTeam(false);
@@ -106,7 +106,7 @@ function App() {
       </nav>
       <div class="container text-left">
         <h1>Build Your Best Team!</h1>
-        {showUserEnter ? <User handleChange={handleChange}></User> : ""}
+        {showUserEnter ? <User handleChange={handleChange} player={player}></User> : ""}
         {showPokemon ? <Pokemon player={player} pokemon={pokemon} user={user}></Pokemon> : ""}
         {showTeam ? <Player player={player} pokemon={pokemon} user={user}></Player> : ""}
         <br/>
@@ -120,6 +120,18 @@ function App() {
   );
 }
 
-// Navbar image from https://www.freeiconspng.com/img/45343
+// Image from https://www.freeiconspng.com/img/45343
+// <a
+//   className="nav-item active nav-link"
+//   href="about"
+//   onClick={(evt) => {
+//     evt.preventDefault();
+//     setShowTeam(false);
+//     setShowPokemon(false);
+//   }}
+// >
+//   About PokeMongoDB
+// </a>
+
 
 export default App;
