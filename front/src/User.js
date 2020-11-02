@@ -37,9 +37,9 @@ function User(props) {
         return;
       }
     }
-    event.preventDefault();
-    props.handleChange(username);
-    sessionStorage.setItem("username", username);
+    //event.preventDefault();
+    //props.handleChange(username);
+    //sessionStorage.setItem("username", username);
   }
 
   function deleteUser(event) {
@@ -81,12 +81,7 @@ function User(props) {
       <br />
       <div>
         <form action="/newUser" method="post" onSubmit={haveUser}>
-          <input
-            type="text"
-            placeholder="Username"
-            name="newUsername"
-            onChange={usernameChange}
-          />
+          <input type="text" name="newUsername" onChange={usernameChange} />
           <input type="submit" value="Create User" />
         </form>
       </div>
