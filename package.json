@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "cd front && npm install && npm start",
+    "heroku-postbuild": "cd front && npm install && npm build",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
