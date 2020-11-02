@@ -42,6 +42,21 @@ function User(props) {
     sessionStorage.setItem("username", username);
   }
 
+  function deleteUser(event) {
+    const users = props.player;
+    let len = users.length;
+    console.log("players:", users);
+    for (let x = 0; x < len; x++) {
+      console.log("checking user");
+      if (users[x].name === username) {
+        return;
+      }
+    }
+    alert(
+      "Error: user does not exist."
+    );
+  }
+
   return (
     <div>
       <div>
@@ -61,15 +76,22 @@ function User(props) {
       <br />
       <div>
         <form onSubmit={submit}>
-          <input type="text" placeholder="username" onChange={usernameChange} />
+          <input type="text" placeholder="Username" onChange={usernameChange} />
           <input type="submit" value="Login" />
         </form>
       </div>
       <br />
       <div>
         <form action="/newUser" method="post" onSubmit={haveUser}>
-          <input type="text" name="newUsername" onChange={usernameChange} />
+          <input type="text" placeholder="Username" name="newUsername" onChange={usernameChange} />
           <input type="submit" value="Create User" />
+        </form>
+      </div>
+      <br />
+      <div>
+        <form action="/deleteUser" method="post" onSubmit={deleteUser}>
+          <input type="text" placeholder="Username" name="deletedUser" onChange={usernameChange} />
+          <input type="submit" value="Delete User" />
         </form>
       </div>
     </div>
