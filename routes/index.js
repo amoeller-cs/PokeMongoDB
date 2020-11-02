@@ -1,26 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-
 const myDB = require("../db/myPokeMongoDB.js"); //pokedb
-// const myImgs = require("./imgs"); //pokedb
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.send({ title: 'PokeMongoDB Create a Team!' });
 });
 
-// router.get('/imgs', (req, res, next) => {
-//   const player = await myImgs.getImage();
-//   res.send(imgs);
-// });
-
 router.get('/player', async (req, res, next) => {
   const player = await myDB.getPlayer("alex");
   res.json(player);
 });
-
-// const pokemonList = ["Squirtle", "Pikachu"];
 
 router.get('/pokemon', async (req, res, next) => {
   const pokemon = await myDB.getPokemon();
@@ -32,10 +23,10 @@ router.post('/updateTeam', async (req, res, next) => {
   dex = dex - 1;
   let pokemon = req.body.newPokemon;
   let name = req.body.name;
-  myDB.setPokemon("alex", "team", dex, pokemon);
+  let user = req.body.user;
+  myDB.setPokemon(user, "team", dex, pokemon);
   const player = await myDB.getPlayer();
-  // res.json(player);
-  res.redirect("/");
+  res.redirect("/"); // redirect to home page
 });
 
 router.get('/start', async (req, res, next) => {
