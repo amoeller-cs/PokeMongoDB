@@ -30,11 +30,12 @@ function MyDB() {
     const players = db.collection("players");
     const result = await players.find({ name: player }).toArray();
     if (result.length == 0) {
-      players.insertOne({
+      await players.insertOne({
         name: player,
         team: ["001", "004", "007", "025", "016", "019"],
       });
     }
+    client.close();
     return;
   };
 
@@ -56,7 +57,51 @@ function MyDB() {
     await client.connect();
     const db = client.db("pokedb"); // access pokemon db
     const player = db.collection("players"); // access player collection
+    const favs = db.collection("favs");
+    await favs.deleteMany({ _id: user });
     return player.deleteMany({ name: user });
+  };
+
+  myDB.removeFavorite = async (user, pokemon) => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    const db = client.db("pokedb"); // access pokemon db
+    const favs = db.collection("favs");
+    await favs.update({ _id: user }, { $pull: { favMon: pokemon } });
+    return;
+  };
+
+  myDB.createFavorites = async (player) => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    const db = client.db("pokedb");
+    const favs = db.collection("favs");
+    const result = await favs.find({ _id: player }).toArray();
+    if (result.length == 0) {
+      await favs.insertOne({
+        _id: player,
+        favMon: ["025"],
+      });
+    }
+    return;
+  };
+
+  myDB.getFavorites = async () => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    const db = client.db("pokedb"); // access pokemon db
+    const favorites = db.collection("favs"); // access player collection
+    return favorites.find({}).toArray();
+  };
+
+  myDB.addFavorites = async (user, pokemon) => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    const db = client.db("pokedb"); // access pokemon db
+    const favorites = db.collection("favs"); // access player collection
+    await favorites.update({ _id: user }, { $addToSet: { favMon: pokemon } });
+    client.close();
+    return;
   };
 
   myDB.loadPokemon = async () => {
