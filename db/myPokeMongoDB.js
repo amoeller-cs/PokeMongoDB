@@ -28,10 +28,13 @@ function MyDB() {
     await client.connect();
     const db = client.db("pokedb");
     const players = db.collection("players");
-    players.insertOne({
-      name: player,
-      team: ["001", "004", "007", "025", "016", "019"],
-    });
+    const result = await players.find({ name: player }).toArray();
+    if (result.length == 0) {
+      players.insertOne({
+        name: player,
+        team: ["001", "004", "007", "025", "016", "019"],
+      });
+    }
     return;
   };
 
