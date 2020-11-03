@@ -45,8 +45,6 @@ function App() {
     }
   }, []);
 
-  console.log("got player", player);
-
   function handleChange(username) {
     console.log(username);
     setUser(username);
