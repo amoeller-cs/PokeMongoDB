@@ -67,7 +67,9 @@ function User(props) {
           there, you can search for the Pokemon you would like in your team with
           the search form, or scroll until you find one you like. Choose the
           position you would like to place the Pokemon in your team and click
-          the add Pokemon button to update your team!
+          the add Pokemon button to update your team! Finally, if there are
+          Pokemon you would like to frequently move in and out of your team you
+          can add them or remove them from your favorites section to do easily!
         </p>
       </div>
       <br />
