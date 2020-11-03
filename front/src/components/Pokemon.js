@@ -53,7 +53,22 @@ function Pokemon(props) {
               value={`${props.user}`}
             />
             <br />
-            <button type="submit">Add this pokemon</button>
+            <button type="submit">Add to your team</button>
+          </form>
+          <form action="/newFav" method="post">
+            <input
+              type="hidden"
+              name="newPokemon"
+              id={`newPokemon${p._id}`}
+              value={`${p._id}`}
+            />
+            <input
+              type="hidden"
+              name="user"
+              id="user"
+              value={`${props.user}`}
+            />
+            <button type="submit">Add to favorites</button>
           </form>
           <br />
         </li>
