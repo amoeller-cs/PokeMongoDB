@@ -112,7 +112,7 @@ function Player(props) {
         <li>Poison : {statMap.get("Poison")}</li>
         <li>Psychic : {statMap.get("Psychic")}</li>
         <li>Rock : {statMap.get("Rock")}</li>
-        <li>Rock : {statMap.get("Steel")}</li>
+        <li>Steel : {statMap.get("Steel")}</li>
         <li>Water : {statMap.get("Water")}</li>
       </div>
     );
