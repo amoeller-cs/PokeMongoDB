@@ -9,9 +9,9 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
   const [player, setPlayer] = useState([]);
-  const [showTeam, setShowTeam] = useState(true);
+  const [showTeam, setShowTeam] = useState(false);
   const [user, setUser] = useState("");
-  const [showUserEnter, setShowUserEnter] = useState(false);
+  const [showUserEnter, setShowUserEnter] = useState(true);
 
   useEffect(() => {
     const getPokemon = async () => {
