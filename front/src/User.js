@@ -31,6 +31,10 @@ function User(props) {
     let len = users.length;
     for (let x = 0; x < len; x++) {
       console.log("checking user");
+      if (users[x].name.length < 1) {
+        alert("Error: please enter valid username.");
+        return;
+      }
       if (users[x].name === username) {
         alert("Error: user already exists.");
         return;

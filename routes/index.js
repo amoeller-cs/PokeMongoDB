@@ -36,7 +36,9 @@ router.post("/newUser", async (req, res) => {
 
 router.post("/newUser", async (req, res) => {
   let user = req.body.newUsername;
-  myDB.createTeam(user);
+  if(user != "") {
+    myDB.createTeam(user);
+  }
   res.redirect("/"); // redirect to home page
 });
 

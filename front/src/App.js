@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./styles/App.css";
 
 import Pokemon from "./Pokemon.js";
 import Player from "./Player.js";
@@ -23,7 +23,7 @@ function App() {
       }
     };
     getPokemon();
-  }, []); // Only run the first time
+  }, []); // Only run the first time; fetches list of pokemon
 
   useEffect(() => {
     const getPlayer = async () => {
@@ -36,14 +36,14 @@ function App() {
       }
     };
     getPlayer();
-  }, []);
+  }, []); // Only run the first time; fetches user's team
 
   useEffect(() => {
     const storedUser = sessionStorage.getItem("username");
     if (storedUser) {
       setUser(storedUser);
     }
-  }, []);
+  }, []); // Only run the first time; gets username
 
   function handleChange(username) {
     console.log(username);
@@ -58,7 +58,7 @@ function App() {
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
-          <img src="./pika.png" alt="Pikachu" title="Pikachu" width="60" />
+          <img src="./images/pika.png" alt="Pikachu" title="Pikachu" width="60" />
           PokeMongoDB
         </a>
         <a
@@ -120,10 +120,10 @@ function App() {
         <footer>
           Created by Alex Moeller and Ely Lam 2020{" "}
           <img
-            src="./pokeball-favicon.png"
+            src="./images/pokeball.png"
             alt="Pokeball"
             title="Pokeball"
-            width="30"
+            width="20"
           />
         </footer>
       </div>
