@@ -12,7 +12,6 @@ function User(props) {
   function submit(event) {
     const users = props.player;
     let len = users.length;
-    console.log("players:", users);
     for (let x = 0; x < len; x++) {
       console.log("checking user");
       if (users[x].name === username) {
@@ -30,7 +29,6 @@ function User(props) {
   function haveUser(event) {
     const users = props.player;
     let len = users.length;
-    console.log("players:", users);
     for (let x = 0; x < len; x++) {
       console.log("checking user");
       if (users[x].name === username) {
@@ -43,7 +41,6 @@ function User(props) {
   function deleteUser(event) {
     const users = props.player;
     let len = users.length;
-    console.log("players:", users);
     for (let x = 0; x < len; x++) {
       console.log("checking user");
       if (users[x].name === username) {
