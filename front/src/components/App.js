@@ -4,6 +4,7 @@ import "./styles/App.css";
 import Pokemon from "./Pokemon.js";
 import Player from "./Player.js";
 import User from "./User.js";
+import Favorites from "./Favorites.js";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -12,6 +13,8 @@ function App() {
   const [showTeam, setShowTeam] = useState(false);
   const [user, setUser] = useState("");
   const [showUserEnter, setShowUserEnter] = useState(true);
+  const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -39,6 +42,19 @@ function App() {
   }, []); // Only run the first time; fetches user's team
 
   useEffect(() => {
+    const getFavorites = async () => {
+      console.log("getting favorites");
+      try {
+        const _favorites = await fetch("/favorites").then((res) => res.json());
+        setFavorites(_favorites);
+      } catch (err) {
+        console.log("error ", err);
+      }
+    };
+    getFavorites();
+  }, []); // Only run the first time; fetches user's team
+
+  useEffect(() => {
     const storedUser = sessionStorage.getItem("username");
     if (storedUser) {
       setUser(storedUser);
@@ -58,7 +74,12 @@ function App() {
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
-          <img src="./images/pika.png" alt="Pikachu" title="Pikachu" width="60" />
+          <img
+            src="./images/pika.png"
+            alt="Pikachu"
+            title="Pikachu"
+            width="60"
+          />
           PokeMongoDB
         </a>
         <a
@@ -69,6 +90,7 @@ function App() {
             setShowTeam(true);
             setShowPokemon(false);
             setShowUserEnter(false);
+            setShowFavorites(false);
           }}
         >
           Team Page<span className="sr-only">(current)</span>
@@ -81,9 +103,24 @@ function App() {
             setShowPokemon(true);
             setShowTeam(false);
             setShowUserEnter(false);
+            setShowFavorites(false);
           }}
         >
           Pokemon List<span className="sr-only">(current)</span>
+        </a>
+        <a
+          className="nav-item active mavbar-nav nav-link navbar-right"
+          href="favoriteMon"
+          onClick={(evt) => {
+            evt.preventDefault();
+            setShowTeam(false);
+            setShowPokemon(false);
+            setShowUserEnter(false);
+            setShowFavorites(true);
+          }}
+        >
+          Favorites
+          <span className="sr-only">(current)</span>
         </a>
         <a
           className="nav-item active mavbar-nav nav-link navbar-right"
@@ -93,6 +130,7 @@ function App() {
             setShowTeam(false);
             setShowPokemon(false);
             setShowUserEnter(true);
+            setShowFavorites(false);
           }}
         >
           Change User: {user}
@@ -103,6 +141,11 @@ function App() {
         <h1>Build Your Best Team!</h1>
         {showUserEnter ? (
           <User handleChange={handleChange} player={player}></User>
+        ) : (
+          ""
+        )}
+        {showFavorites ? (
+          <Favorites favorites={favorites} user={user}></Favorites>
         ) : (
           ""
         )}
