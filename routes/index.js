@@ -44,7 +44,7 @@ router.get("/start", async (req, res) => {
 
 router.post("/newUser", async (req, res) => {
   let user = req.body.newUsername;
-  if(user != "") {
+  if (user != "") {
     await myDB.createTeam(user);
     await myDB.createFavorites(user);
   }
