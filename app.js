@@ -13,6 +13,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'front/build')));
 
-app.use('/', indexRouter);
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(9000);
+
+// app.use('/', indexRouter);
 
 module.exports = app;
