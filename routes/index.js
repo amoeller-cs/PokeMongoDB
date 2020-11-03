@@ -22,6 +22,20 @@ router.post("/updateTeam", async (req, res) => {
   res.redirect("/"); // redirect to home page
 });
 
+router.post("/newFav", async (req, res) => {
+  let pokemon = req.body.newPokemon;
+  let user = req.body.user;
+  myDB.addFavorites(user, pokemon);
+  res.redirect("/"); // redirect to home page
+});
+
+router.post("/removeFav", async (req, res) => {
+  let pokemon = req.body.removeMon;
+  let user = req.body.player;
+  await myDB.removeFavorite(user, pokemon);
+  res.redirect("/"); // redirect to home page
+});
+
 router.get("/start", async (req, res) => {
   myDB.loadPokemon();
   const pokemon = await myDB.getPokemon();
@@ -30,14 +44,9 @@ router.get("/start", async (req, res) => {
 
 router.post("/newUser", async (req, res) => {
   let user = req.body.newUsername;
-  myDB.createTeam(user);
-  res.redirect("/"); // redirect to home page
-});
-
-router.post("/newUser", async (req, res) => {
-  let user = req.body.newUsername;
   if(user != "") {
-    myDB.createTeam(user);
+    await myDB.createTeam(user);
+    await myDB.createFavorites(user);
   }
   res.redirect("/"); // redirect to home page
 });
@@ -46,6 +55,11 @@ router.post("/deleteUser", async (req, res) => {
   let user = req.body.deletedUser;
   myDB.deletePlayer(user);
   res.redirect("/"); // redirect to home page
+});
+
+router.get("/favorites", async (req, res) => {
+  const favs = await myDB.getFavorites();
+  res.json(favs); // redirect to home page
 });
 
 module.exports = router;
