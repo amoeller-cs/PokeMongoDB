@@ -5,23 +5,23 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "heroku-postbuild": "cd front && npm install && npm build",
-    "start": "nodemon ./bin/www"
+    "heroku-postbuild": "cd front && npm install && npm run build",
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "12.18.x"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "mongodb": "^3.6.2",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.14.0",
     "eslint-plugin-react": "^7.21.5",
-    "mongodb": "^3.6.2",
     "nodemon": "^2.0.6",
     "prettier": "^2.1.2"
   }
