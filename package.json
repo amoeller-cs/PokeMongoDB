@@ -3,10 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "heroku-postbuild": "cd front && npm install && npm run build",
-    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www"
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
+    "heroku-postbuild": "cd front && npm install && npm run build"
   },
   "engines": {
     "node": "12.18.x"
