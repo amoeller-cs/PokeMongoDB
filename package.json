@@ -2,6 +2,7 @@
   "name": "pokemongodb",
   "version": "0.0.0",
   "private": true,
+  "main": "./bin/www",
   "scripts": {
     "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
     "heroku-postbuild": "cd front && npm install && npm run build"
