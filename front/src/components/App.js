@@ -15,7 +15,7 @@ function App() {
   const [showUserEnter, setShowUserEnter] = useState(true);
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
-
+// I like how organized your code. This makes it very easy to follow.
   useEffect(() => {
     const getPokemon = async () => {
       try {
@@ -83,6 +83,7 @@ function App() {
           PokeMongoDB
         </a>
         <a
+    // I did all these setShow's as well. I feel like there's gotta be a better way because this would get out of hand.
           className="nav-item active nav-link"
           href="teamEdit"
           onClick={(evt) => {
