@@ -28,6 +28,7 @@ function App() {
     getPokemon();
   }, []); // Only run the first time; fetches list of pokemon
 
+<!-- Maybe it could be less redundant, for example, move these "try catch erro" into one "try catch erro" -->
   useEffect(() => {
     const getPlayer = async () => {
       console.log("getting player");
