@@ -8,6 +8,7 @@ function Player(props) {
     );
     console.log(teams);
     if (teams.length === 0) return null;
+    // Could probably be done in a loop. 
     let poke = teams[0].team[0];
     let poke1 = teams[0].team[1];
     let poke2 = teams[0].team[2];
@@ -57,6 +58,7 @@ function Player(props) {
     console.log("getting teams", teams);
     if (teams.length === 0) return null;
     console.log("getting team in player");
+    
     let poke = teams[0].team[0];
     let poke1 = teams[0].team[1];
     let poke2 = teams[0].team[2];
