@@ -24,7 +24,8 @@ function MyDB() {
   };
 
   myDB.createTeam = async (player) => {
-    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    const client = new MongoClient(uri, { useUnifiedTopology: true });\
+    // not sure but I feel like there may be too many awaits here
     await client.connect();
     const db = client.db("pokedb");
     const players = db.collection("players");
@@ -32,6 +33,7 @@ function MyDB() {
     if (result.length == 0) {
       await players.insertOne({
         name: player,
+        //Why is the team set to specific numbers here
         team: ["001", "004", "007", "025", "016", "019"],
       });
     }
@@ -104,6 +106,7 @@ function MyDB() {
     return;
   };
 
+  //Isn't this already supposed to be in the collection. I think it might be a bad call to load them each time.
   myDB.loadPokemon = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
