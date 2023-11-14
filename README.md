@@ -1,6 +1,6 @@
 # PokeMongoDB
 # Authors: 
-Alex Moeller and Ely Lam
+Alex Moeller and Domenic (Ely) Lam
 # Class:
 Made for: https://johnguerra.co/classes/webDevelopment_fall_2020/
 # Project Objective: 
