@@ -54,7 +54,9 @@ router.post("/newUser", async (req, res) => {
 router.post("/deleteUser", async (req, res) => {
   let user = req.body.deletedUser;
   myDB.deletePlayer(user);
+  //Since express isn't being used anymore does this still redirect in the main page. I thought that we should have things like that in React.
   res.redirect("/"); // redirect to home page
+  
 });
 
 router.get("/favorites", async (req, res) => {
