@@ -161,7 +161,7 @@ function App() {
         )}
         <br />
         <footer>
-          Created by Alex Moeller and Ely Lam 2020{" "}
+          Created by Alex Moeller and Domenic (Ely) Lam 2020{" "}
           <img
             src="./images/pokeball.png"
             alt="Pokeball"
